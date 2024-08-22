@@ -1,0 +1,15 @@
+*{
+    font-family:"Work Sans", Arial, sans-serif ;   
+   }
+   .upload{
+       width:180px
+   }
+   .inputcheck{
+       height: 50px;
+       width: 100%;
+       margin-bottom: 30px;
+       
+   }
+   .inputcheck:focus{
+      outline: none;
+   }

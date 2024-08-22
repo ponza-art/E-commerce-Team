@@ -1,0 +1,58 @@
+
+<div class="row px-lg-2 py-2 py-3 mt-3 rounded-2 border-bottom col-12">
+    <div class=" col-sm-12 col-md-5 col-lg-5 col-xl-5 d-flex  ">
+     
+       <img [src]="productitem.images" width="150px" alt="product_image" class="p-lg-1 rounded-4 "/> 
+       
+    
+    <div class=" d-flex flex-column justify-content-center px-3 lh-lg col-sm-9 ">
+       <a class="text-decoration-none ">{{ productitem.title }}</a>
+       <span class="text-secondary">Store : <a class="text-decoration-none ">{{ productitem.catogry }}</a></span>
+       <div class=" col-md-2 col-lg-2 col-xl-2 d-flex align-items-center  justify-content-md-center  d-md-none    ps-xl-4  py-md-0">
+      
+        <span class="text-secondary d-md-none ">Price:</span>
+      <span>{{ productitem.price }}$</span>
+      </div>
+      <div class=" col-sm-12  d-flex align-items-center d-md-none py-sm-2  ">
+      
+        <div class=" border border-2 d-flex justify-content-sm-between col-sm-11 px-2 ">
+          <button class="border-0  bg-transparent" (click)="decreaseQuantities(productitem)" ><span >-</span></button>
+          <span class="mx-3 fs-5 px">{{ productitem.quantity }}</span>
+          <button class="border-0  bg-transparent" [disabled]="productitem.quantity >= productitem.stock" (click)="increaseQuantities(productitem)" ><span >+</span></button>
+        </div>
+        <div class="  d-md-none col-sm-1">
+          <button class="w-100 text-danger border-0  bg-transparent " (click)="removeItems(productitem)" >X</button> 
+         </div>
+         
+      </div>
+      <div class=" d-md-none col-sm-12 d-flex  align-items-center justify-content-md-center  py-md-0 ">
+          
+        <span class="text-secondary d-md-none ">Total:</span>
+        <span>{{ productitem.price * productitem.quantity }}$</span>
+        </div>
+    </div>
+   
+    </div>
+    
+    <div class=" col-md-2 col-lg-2 col-xl-2 d-flex align-items-center  justify-content-md-center d-none d-md-flex    ps-xl-4  py-md-0">
+      
+      <span class="text-secondary d-md-none ">Price:</span>
+    <span>{{ productitem.price }}$</span>
+    </div>
+    <div class=" col-sm-12 col-md-2 col-lg-2 col-xl-2 d-flex align-items-center px-md-1 px-lg-1 px-xl-1  justify-content-center d-none d-md-flex  ">
+      
+      <div class=" border border-2   p-1 d-flex justify-content-sm-between justify-content-center col-md-12 col-lg-9  my-md-0 col-sm-9  ">
+        <button class="border-0  bg-transparent" (click)="decreaseQuantities(productitem)" ><span >-</span></button>
+        <span class="mx-3 fs-5 px">{{ productitem.quantity }}</span>
+        <button class="border-0  bg-transparent" [disabled]="productitem.quantity >= productitem.stock" (click)="increaseQuantities(productitem)" ><span >+</span></button>
+      </div>
+    </div>
+    <div class=" col-md-2 col-lg-2 col-xl-2 d-flex  align-items-center justify-content-md-center  py-md-0 d-none d-md-flex ">
+      
+      <span class="text-secondary d-md-none ">Total:</span>
+      <span>{{ productitem.totalprice}}$</span>
+      </div>
+    <div class=" d-none d-md-flex col-md-1 col-lg-1 col-xl-1  d-flex align-items-md-center  justify-content-md-center  ">
+     <button class="w-100 text-danger border-0  bg-transparent " (click)="removeItems(productitem)" ><i class="bi bi-trash h3"></i></button> 
+    </div>
+  </div>
