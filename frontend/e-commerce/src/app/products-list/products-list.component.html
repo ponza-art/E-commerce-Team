@@ -1,0 +1,75 @@
+<div class="container mt-4">
+  <div class="row">
+    <aside class="col-md-3 bg-light p-3">
+      <h2>Filters</h2>
+      <form>
+        <h3>Category</h3>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="category1" />
+          <label class="form-check-label" for="category1">Electronics</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="category2" />
+          <label class="form-check-label" for="category2">Books</label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="category3" />
+          <label class="form-check-label" for="category3">Clothing</label>
+        </div>
+
+        <h3 class="mt-3">Price Range</h3>
+        <div class="d-flex mb-3">
+          <input
+            type="number"
+            class="form-control me-2"
+            id="minPrice"
+            placeholder="Min Price"
+            min="0"
+          />
+          <input
+            type="number"
+            class="form-control"
+            id="maxPrice"
+            placeholder="Max Price"
+            min="0"
+          />
+        </div>
+
+        <h3 class="mt-3">Rating</h3>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="rating"
+            id="rating1"
+            value="5"
+          />
+          <label class="form-check-label" for="rating1">5 Stars</label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="rating"
+            id="rating2"
+            value="4"
+          />
+          <label class="form-check-label" for="rating2">4 Stars & Up</label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="rating"
+            id="rating3"
+            value="3"
+          />
+          <label class="form-check-label" for="rating3">3 Stars & Up</label>
+        </div>
+      </form>
+    </aside>
+    <div class="col-md-9">
+      <app-product-card></app-product-card>
+    </div>
+  </div>
+</div>

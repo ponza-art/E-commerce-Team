@@ -1,0 +1,31 @@
+.fs-super-small {
+  font-size: 10px;
+}
+.pit-left {
+  margin-left: -5px;
+}
+/* i {
+  font-size: 30px;
+  padding: 0;
+} */
+.bg-orange {
+  background-color: #fcb800;
+}
+.fs-medium {
+  font-size: 13px;
+}
+.fixed {
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  transition: 0.5s linear;
+  top: 0px;
+}
+.notFixed {
+  position: static;
+  transition: 0.5s linear;
+  top: -100px;
+}
+/* .trans {
+  transition: 0.5s ease;
+} */

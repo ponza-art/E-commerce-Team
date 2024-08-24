@@ -1,0 +1,20 @@
+.fs-small {
+  font-size: 13px;
+  width: 30%;
+}
+.description {
+  text-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 70%;
+}
+
+.star-rating {
+  font-size: 24px;
+}
+.empty {
+  color: #ddd;
+}
+.parentElement {
+  text-decoration: none;
+}

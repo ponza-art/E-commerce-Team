@@ -1,0 +1,14 @@
+.card-img-top {
+  height: 150px;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    padding: 1rem;
+  }
+
+  .product {
+    width: 100%;
+  }
+}

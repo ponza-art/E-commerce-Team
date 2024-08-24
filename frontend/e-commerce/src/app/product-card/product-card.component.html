@@ -1,0 +1,277 @@
+<div class="row">
+  <div class="col-4 mb-4">
+    <a routerLink="/product-details" class="parentElement">
+      <div class="card bg-light h-100 d-flex">
+        <div class="w-100 bg-light">
+          <!-- @if(cardData.availabilityStatus == "In Stock"){ -->
+          <div class="rounded-5 fs-small text-center text-white bg-success m-3">
+            <!-- {{ cardData.availabilityStatus }} -->
+            in stock
+          </div>
+          <!-- } @else { -->
+          <!-- <div class="rounded-5 fs-small text-center text-white bg-danger m-3"> -->
+          <!-- {{ cardData.availabilityStatus }} -->
+          <!-- </div> -->
+          <!-- } -->
+          <div class="d-flex justify-content-center">
+            <!-- [src]="cardData?.thumbnail" -->
+            <img
+              src="snow.png"
+              class="img-fluid"
+              style="height: fit-content"
+              alt="Product Image"
+            />
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <p class="card-title description fw-bold text-start">Classic</p>
+            <div class="card-title text-decoration-line-through w-50 text-end">
+              <p class="m-0 p-0">200$</p>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p class="card-text description">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam
+              libero sint accusantium delectus ex pariatur beatae commodi autem
+              facere provident accusamus voluptate aliquid, eveniet tempore, in
+              ipsa id dignissimos architecto.
+            </p>
+            <p class="m-0 p-0 fw-bold">150$</p>
+          </div>
+          <div class="star-rating mb-3">
+            <i
+              *ngFor="let star of fullStars"
+              class="fa fa-star text-success"
+            ></i>
+            <i *ngIf="halfStar" class="fa fa-star-half-alt text-success"></i>
+            <i *ngFor="let star of emptyStars" class="fa fa-star empty"></i>
+          </div>
+          <button class="btn btn-outline-success rounded-pill">
+            View Details
+          </button>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="col-4 mb-4">
+    <a routerLink="/product-details" class="parentElement">
+      <div class="card bg-light h-100 d-flex">
+        <div class="w-100 bg-light">
+          <!-- @if(cardData.availabilityStatus == "In Stock"){ -->
+          <div class="rounded-5 fs-small text-center text-white bg-success m-3">
+            <!-- {{ cardData.availabilityStatus }} -->
+            in stock
+          </div>
+          <!-- } @else { -->
+          <!-- <div class="rounded-5 fs-small text-center text-white bg-danger m-3"> -->
+          <!-- {{ cardData.availabilityStatus }} -->
+          <!-- </div> -->
+          <!-- } -->
+          <div class="d-flex justify-content-center">
+            <!-- [src]="cardData?.thumbnail" -->
+            <img
+              src="snow.png"
+              class="img-fluid"
+              style="height: fit-content"
+              alt="Product Image"
+            />
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <p class="card-title description fw-bold text-start">Classic</p>
+            <div class="card-title text-decoration-line-through w-50 text-end">
+              <p class="m-0 p-0">200$</p>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p class="card-text description">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam
+              libero sint accusantium delectus ex pariatur beatae commodi autem
+              facere provident accusamus voluptate aliquid, eveniet tempore, in
+              ipsa id dignissimos architecto.
+            </p>
+            <p class="m-0 p-0 fw-bold">150$</p>
+          </div>
+          <div class="star-rating mb-3">
+            <i
+              *ngFor="let star of fullStars"
+              class="fa fa-star text-success"
+            ></i>
+            <i *ngIf="halfStar" class="fa fa-star-half-alt text-success"></i>
+            <i *ngFor="let star of emptyStars" class="fa fa-star empty"></i>
+          </div>
+          <button class="btn btn-outline-success rounded-pill">
+            View Details
+          </button>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="col-4 mb-4">
+    <a routerLink="/product-details" class="parentElement">
+      <div class="card bg-light h-100 d-flex">
+        <div class="w-100 bg-light">
+          <!-- @if(cardData.availabilityStatus == "In Stock"){ -->
+          <div class="rounded-5 fs-small text-center text-white bg-success m-3">
+            <!-- {{ cardData.availabilityStatus }} -->
+            in stock
+          </div>
+          <!-- } @else { -->
+          <!-- <div class="rounded-5 fs-small text-center text-white bg-danger m-3"> -->
+          <!-- {{ cardData.availabilityStatus }} -->
+          <!-- </div> -->
+          <!-- } -->
+          <div class="d-flex justify-content-center">
+            <!-- [src]="cardData?.thumbnail" -->
+            <img
+              src="snow.png"
+              class="img-fluid"
+              style="height: fit-content"
+              alt="Product Image"
+            />
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <p class="card-title description fw-bold text-start">Classic</p>
+            <div class="card-title text-decoration-line-through w-50 text-end">
+              <p class="m-0 p-0">200$</p>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p class="card-text description">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam
+              libero sint accusantium delectus ex pariatur beatae commodi autem
+              facere provident accusamus voluptate aliquid, eveniet tempore, in
+              ipsa id dignissimos architecto.
+            </p>
+            <p class="m-0 p-0 fw-bold">150$</p>
+          </div>
+          <div class="star-rating mb-3">
+            <i
+              *ngFor="let star of fullStars"
+              class="fa fa-star text-success"
+            ></i>
+            <i *ngIf="halfStar" class="fa fa-star-half-alt text-success"></i>
+            <i *ngFor="let star of emptyStars" class="fa fa-star empty"></i>
+          </div>
+          <button class="btn btn-outline-success rounded-pill">
+            View Details
+          </button>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="col-4 mb-4">
+    <a routerLink="/product-details" class="parentElement">
+      <div class="card bg-light h-100 d-flex">
+        <div class="w-100 bg-light">
+          <!-- @if(cardData.availabilityStatus == "In Stock"){ -->
+          <div class="rounded-5 fs-small text-center text-white bg-success m-3">
+            <!-- {{ cardData.availabilityStatus }} -->
+            in stock
+          </div>
+          <!-- } @else { -->
+          <!-- <div class="rounded-5 fs-small text-center text-white bg-danger m-3"> -->
+          <!-- {{ cardData.availabilityStatus }} -->
+          <!-- </div> -->
+          <!-- } -->
+          <div class="d-flex justify-content-center">
+            <!-- [src]="cardData?.thumbnail" -->
+            <img
+              src="snow.png"
+              class="img-fluid"
+              style="height: fit-content"
+              alt="Product Image"
+            />
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <p class="card-title description fw-bold text-start">Classic</p>
+            <div class="card-title text-decoration-line-through w-50 text-end">
+              <p class="m-0 p-0">200$</p>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p class="card-text description">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam
+              libero sint accusantium delectus ex pariatur beatae commodi autem
+              facere provident accusamus voluptate aliquid, eveniet tempore, in
+              ipsa id dignissimos architecto.
+            </p>
+            <p class="m-0 p-0 fw-bold">150$</p>
+          </div>
+          <div class="star-rating mb-3">
+            <i
+              *ngFor="let star of fullStars"
+              class="fa fa-star text-success"
+            ></i>
+            <i *ngIf="halfStar" class="fa fa-star-half-alt text-success"></i>
+            <i *ngFor="let star of emptyStars" class="fa fa-star empty"></i>
+          </div>
+          <button class="btn btn-outline-success rounded-pill">
+            View Details
+          </button>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="col-4 mb-4">
+    <a routerLink="/product-details" class="parentElement">
+      <div class="card bg-light h-100 d-flex">
+        <div class="w-100 bg-light">
+          <!-- @if(cardData.availabilityStatus == "In Stock"){ -->
+          <div class="rounded-5 fs-small text-center text-white bg-success m-3">
+            <!-- {{ cardData.availabilityStatus }} -->
+            in stock
+          </div>
+          <!-- } @else { -->
+          <!-- <div class="rounded-5 fs-small text-center text-white bg-danger m-3"> -->
+          <!-- {{ cardData.availabilityStatus }} -->
+          <!-- </div> -->
+          <!-- } -->
+          <div class="d-flex justify-content-center">
+            <!-- [src]="cardData?.thumbnail" -->
+            <img
+              src="snow.png"
+              class="img-fluid"
+              style="height: fit-content"
+              alt="Product Image"
+            />
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between">
+            <p class="card-title description fw-bold text-start">Classic</p>
+            <div class="card-title text-decoration-line-through w-50 text-end">
+              <p class="m-0 p-0">200$</p>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between">
+            <p class="card-text description">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam
+              libero sint accusantium delectus ex pariatur beatae commodi autem
+              facere provident accusamus voluptate aliquid, eveniet tempore, in
+              ipsa id dignissimos architecto.
+            </p>
+            <p class="m-0 p-0 fw-bold">150$</p>
+          </div>
+          <div class="star-rating mb-3">
+            <i
+              *ngFor="let star of fullStars"
+              class="fa fa-star text-success"
+            ></i>
+            <i *ngIf="halfStar" class="fa fa-star-half-alt text-success"></i>
+            <i *ngFor="let star of emptyStars" class="fa fa-star empty"></i>
+          </div>
+          <button class="btn btn-outline-success rounded-pill">
+            View Details
+          </button>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
