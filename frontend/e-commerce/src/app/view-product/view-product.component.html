@@ -1,0 +1,193 @@
+<div
+  class="card mb-3 mx-auto"
+  style="
+    max-width: 1300px;
+    min-height: 600px; /* Adjust this height as needed */
+    background-color: #121212;
+    color: #00ff99;
+    border: 1px solid #00ff99;
+    box-shadow: 0px 0px 15px #00ff99;
+  "
+>
+  <div class="row g-0">
+    <div
+      class="col-md-4 d-flex flex-column justify-content-center align-items-center"
+    >
+      <button
+        class="btn btn-outline-secondary border-0 position-absolute top-0 end-0 m-2"
+        (click)="navigateHome()"
+        style="color: #ff0066"
+      >
+        X
+      </button>
+      <img
+        [src]="selectedImage || productDetails.thumbnail"
+        class="img-fluid rounded-start mb-3"
+        alt="Product Image"
+        style="
+          width: 300px;
+          height: 300px;
+          object-fit: cover;
+          border: 1px solid #ff0066;
+          box-shadow: 0px 0px 10px #ff0066;
+        "
+      />
+      <div class="thumbnail-images d-flex justify-content-center">
+        <img
+          *ngFor="let image of productDetails.images"
+          [src]="image"
+          alt="{{ productDetails.title }}"
+          class="img-thumbnail m-1 bg-opacity-25 bg-secondary"
+          (click)="selectImage(image)"
+          [ngClass]="{ selected: image == selectedImage }"
+          style="
+            cursor: pointer;
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border: 1px solid #00ff99;
+            box-shadow: 0px 0px 10px #00ff99;
+          "
+        />
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card-body">
+        <h5 class="card-title fw-bold" style="color: #ff0066">
+          {{ productDetails.title }}
+        </h5>
+        <p class="card-text text-light" style="color: #00ff99">
+          {{ productDetails.description }}
+        </p>
+        <div class="rating mb-3">
+          <fa-icon
+            class="fa fa-star"
+            [icon]="faStar"
+            [ngClass]="{ checked: productDetails.rating >= 1 }"
+            style="color: #ffcc00"
+          ></fa-icon>
+          <fa-icon
+            class="fa fa-star"
+            [icon]="faStar"
+            [ngClass]="{ checked: productDetails.rating >= 2 }"
+            style="color: #ffcc00"
+          ></fa-icon>
+          <fa-icon
+            class="fa fa-star"
+            [icon]="faStar"
+            [ngClass]="{ checked: productDetails.rating >= 3 }"
+            style="color: #ffcc00"
+          ></fa-icon>
+          <fa-icon
+            class="fa fa-star"
+            [icon]="faStar"
+            [ngClass]="{ checked: productDetails.rating >= 4 }"
+            style="color: #ffcc00"
+          ></fa-icon>
+          <fa-icon
+            class="fa fa-star"
+            [icon]="faStar"
+            [ngClass]="{ checked: productDetails.rating >= 5 }"
+            style="color: #ffcc00"
+          ></fa-icon>
+          <span class="text-muted">({{ productDetails.reviews.length }})</span>
+        </div>
+        <hr style="border-color: #00ff99" />
+        <div class="price-info my-4">
+          <h4 class="price fw-bold" [innerHTML]="productDetails.price"></h4>
+          <p class="text-muted">
+            Discount: {{ productDetails.discountPercentage }}%
+          </p>
+        </div>
+        <hr style="border-color: #00ff99" />
+        <div class="stock-info">
+          <span
+            class="badge"
+            [ngClass]="{
+              'badge-success': productDetails.stock > 0,
+              'badge-danger': productDetails.stock === 0
+            }"
+            style="background-color: #ff0000; color: #ffffff"
+            >{{ productDetails.stock > 0 ? "In stock" : "Out of stock" }}</span
+          >
+          <hr />
+          <div class="tags">
+            <span
+              class="badge p-2 me-2"
+              *ngFor="let tag of productDetails.tags"
+              style="background-color: #1900ff; color: #ffffff"
+              >{{ tag }}</span
+            >
+          </div>
+        </div>
+        <hr style="border-color: #00ff99" />
+        <div class="additional-info">
+          <p>
+            <strong>Brand:</strong
+            ><span class="text-warning">
+              {{ productDetails.brand }}
+            </span>
+          </p>
+          <p>
+            <strong>SKU:</strong>
+            <span class="text-warning">
+              {{ productDetails.sku }}
+            </span>
+          </p>
+          <p>
+            <strong>Weight:</strong>
+            <span class="text-warning"> {{ productDetails.weight }} g </span>
+          </p>
+          <p>
+            <strong>Dimensions:</strong>
+            <span class="text-warning">
+              {{ productDetails.dimensions.width }}
+              x
+              {{ productDetails.dimensions.height }} x
+              {{ productDetails.dimensions.depth }} cm
+            </span>
+          </p>
+          <p>
+            <strong>Warranty:</strong>
+            <span class="text-warning">
+              {{ productDetails.warrantyInformation }}
+            </span>
+          </p>
+          <p>
+            <strong>Shipping Information:</strong>
+            <span class="text-warning">
+              {{ productDetails.shippingInformation }}
+            </span>
+          </p>
+          <p>
+            <strong>Availability Status:</strong>
+            <span class="text-warning">
+              {{ productDetails.availabilityStatus }}
+            </span>
+          </p>
+          <p>
+            <strong>Return Policy:</strong>
+            <span class="text-warning">
+              {{ productDetails.returnPolicy }}
+            </span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card-body">
+        <h5 style="color: #ff0066">Customer Reviews</h5>
+        <div *ngFor="let review of productDetails.reviews">
+          <p>
+            <strong>{{ review.reviewerName }}</strong>
+          </p>
+          <p class="text-warning">{{ review.comment }}</p>
+          <p class="text-light">{{ review.date }}</p>
+          <hr style="border-color: #00ff99" />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

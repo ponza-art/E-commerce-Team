@@ -1,0 +1,74 @@
+.container-edit {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #121212;
+    border: 1px solid #00ff99;
+    box-shadow: 0 0 15px #00ff99;
+    color: #00ff99;
+  }
+  
+  .title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: #ff0066;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: block;
+    color: #00ff99;
+  }
+  
+  .form-control {
+    background-color: #121212;
+    border: 1px solid #ff0066;
+    color: #00ff99;
+    padding: 10px;
+    font-size: 1rem;
+  }
+  
+  .form-control:focus {
+    border-color: #00ff99;
+    box-shadow: 0 0 10px #00ff99;
+  }
+  
+  .btn {
+    display: inline-block;
+    margin-right: 10px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 0;
+  }
+  
+  .btn-outline-cyberpunk {
+    color: #00ff99;
+    border: 1px solid #00ff99;
+    background-color: transparent;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .btn-outline-cyberpunk:hover {
+    background-color: #00ff99;
+    color: #121212;
+  }
+  
+  .btn-outline-cyberpunk-danger {
+    color: #ff0066;
+    border: 1px solid #ff0066;
+    background-color: transparent;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .btn-outline-cyberpunk-danger:hover {
+    background-color: #ff0066;
+    color: #121212;
+  }
+  

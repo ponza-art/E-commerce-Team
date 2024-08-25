@@ -1,0 +1,116 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-12 d-flex justify-content-between mb-3">
+      <input
+        type="text"
+        class="form-control w-50"
+        placeholder="Search products"
+        [(ngModel)]="searchTerm"
+        (input)="onSearch()"
+      />
+
+      <select
+        class="text-info text-bg-dark"
+        id="itemsPerPage"
+        [(ngModel)]="itemsPerPage"
+        (change)="onItemsPerPageChange($event)"
+      >
+        <option *ngFor="let option of [5, 10, 20, 50]" [value]="option">
+          {{ option }}
+        </option>
+      </select>
+
+      <button class="btn btn-outline-cyberpunk" (click)="addProduct()">
+        Add Product
+      </button>
+      <button class="btn btn-outline-cyberpunk" (click)="exportToCSV()">
+        Export to CSV
+      </button>
+    </div>
+
+    <div *ngIf="filteredProductsArray.length > 0" class="col-12">
+      <div class="table-responsive">
+        <table class="table table-dark align-middle">
+          <thead class="bg-black">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Product</th>
+              <th scope="col">Category</th>
+              <th scope="col">Stock</th>
+              <th scope="col">Price</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="
+                let product of filteredProductsArray
+                  | paginate : { itemsPerPage: itemsPerPage, currentPage: p };
+                track: ProductId
+              "
+            >
+              <td class="text-center">{{ product.id }}</td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <img
+                    src="{{ product.thumbnail }}"
+                    alt="{{ product.title }}"
+                    class="product-img me-3 img-cyberpunk"
+                  />
+                  <div>
+                    <div class="fw-bold fs-4">{{ product.title }}</div>
+                    <div class="text-light fs-6 fw-lighter">
+                      {{ product.description }}
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td class="text-center">
+                <div class="badge badge-active">{{ product.category }}</div>
+              </td>
+              <td class="text-center">{{ product.stock }}</td>
+              <td class="text-center">{{ product.price }}</td>
+              <td>
+                <div class="d-flex gap-2">
+                  <button
+                    class="btn btn-sm btn-outline-cyberpunk"
+                    title="Edit Product"
+                    (click)="editProduct(product.id)"
+                  >
+                    <fa-icon [icon]="edit"></fa-icon>
+                  </button>
+                  <button
+                    class="btn btn-sm btn-outline-cyberpunk-danger"
+                    title="Delete Product"
+                    (click)="deleteProduct(product)"
+                  >
+                    <fa-icon [icon]="delete"></fa-icon>
+                  </button>
+                  <button
+                    class="btn btn-sm btn-outline-cyberpunk-primary"
+                    title="View Product"
+                    (click)="viewProduct(product.id)"
+                  >
+                    <fa-icon [icon]="view"></fa-icon>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <pagination-controls
+        (pageChange)="p = $event"
+        class="pagination-controls"
+      ></pagination-controls>
+    </div>
+
+    <div
+      *ngIf="filteredProductsArray.length === 0"
+      class="col-12 text-center py-5"
+    >
+      <p class="text-white">No Products to Show</p>
+    </div>
+  </div>
+</div>

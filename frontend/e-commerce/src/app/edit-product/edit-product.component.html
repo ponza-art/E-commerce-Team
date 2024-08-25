@@ -1,0 +1,84 @@
+<div class="container-edit my-5">
+    <h2 class="title">Edit Product</h2>
+    <form (ngSubmit)="saveProduct()">
+      <div class="form-group">
+        <label for="title" class="form-label">Product Title</label>
+        <input
+          type="text"
+          id="title"
+          class="form-control"
+          [(ngModel)]="product.title"
+          name="title"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="description" class="form-label">Description</label>
+        <textarea
+          id="description"
+          class="form-control"
+          [(ngModel)]="product.description"
+          name="description"
+          rows="3"
+          required
+        ></textarea>
+      </div>
+  
+      <div class="form-group">
+        <label for="category" class="form-label">Category</label>
+        <input
+          type="text"
+          id="category"
+          class="form-control"
+          [(ngModel)]="product.category"
+          name="category"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="stock" class="form-label">Stock</label>
+        <input
+          type="number"
+          id="stock"
+          class="form-control"
+          [(ngModel)]="product.stock"
+          name="stock"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="price" class="form-label">Price</label>
+        <input
+          type="number"
+          step="0.01"
+          id="price"
+          class="form-control"
+          [(ngModel)]="product.price"
+          name="price"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="thumbnail" class="form-label">Thumbnail URL</label>
+        <input
+          type="text"
+          id="thumbnail"
+          class="form-control"
+          [(ngModel)]="product.thumbnail"
+          name="thumbnail"
+        />
+      </div>
+  
+      <button type="submit" class="btn btn-outline-cyberpunk">
+        Save Changes
+      </button>
+      <button type="button" class="btn btn-outline-cyberpunk-danger" (click)="cancel()">
+        Cancel
+      </button>
+    </form>
+  </div>
+  

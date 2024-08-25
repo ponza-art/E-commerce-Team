@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg bg-dark text-warning ">
+  <div class="container-fluid text-center d-flex justify-content-start  gap-2">
+    <a class="navbar-brand text-warning fw-bolder" href="#">E-commerce</a>
+    <div class="mt-2 d-flex  ">
+        <a
+        class="nav-link  text-light"
+        [routerLink]="['/admin/products']"
+        routerLinkActive="active-link"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Products</a
+      >
+  
+     
+      <a
+      class="nav-link text-light"
+      [routerLink]="['/admin/orders']"
+      routerLinkActive="active-link"
+      >Orders</a
+    >
+    <a
+    class="nav-link text-light"
+    [routerLink]="['/admin/customers']"
+    routerLinkActive="active-link"
+    >Customers</a
+  >
+
+
+    </div>
+    
+  </div>
+</nav>

@@ -27,9 +27,13 @@
               }
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+
+            ]
           },
           "configurations": {
             "production": {
@@ -85,12 +89,20 @@
               }
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+
+            ]
           }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "1d5a8a1e-ccb0-424b-9fb1-604248c17926"
   }
 }
