@@ -32,6 +32,6 @@ export class EditProductComponent {
     this.router.navigate(['']);
   }
   cancel() {
-    this.router.navigate(['']);
+    this.router.navigate(['/admin/products']);
   }
 }

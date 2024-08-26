@@ -43,11 +43,11 @@ export class ProductTableComponent {
   }
 
   editProduct(id:number) {
-    this.router.navigate(['/edit-product', id]);
+    this.router.navigate(['/admin/edit-product', id]);
   }
 
   viewProduct(id: number) {
-    this.router.navigate(['/view-product', id]);
+    this.router.navigate(['/admin/view-product', id]);
     
   }
 

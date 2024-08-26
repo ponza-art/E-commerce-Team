@@ -9,13 +9,13 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-view-product',
   standalone: true,
-  imports: [FontAwesomeModule, NgClass, FormsModule, NgFor, RouterLink,NgIf],
+  imports: [FontAwesomeModule, NgClass, FormsModule, NgFor, RouterLink, NgIf],
   templateUrl: './view-product.component.html',
   styleUrls: ['./view-product.component.css'],
 })
 export class ViewProductComponent implements OnInit {
   selectedImage = '';
-  faStar = faStar
+  faStar = faStar;
   productDetails: any = null;
 
   @Input() id: number = 0;
@@ -27,14 +27,14 @@ export class ViewProductComponent implements OnInit {
       this.http.getProduct(this.id).subscribe((res: any) => {
         this.productDetails = res;
         console.log(this.productDetails);
-        
+
         this.selectedImage = this.productDetails.thumbnail;
       });
     }
   }
 
   navigateHome() {
-    this.router.navigate(['']);
+    this.router.navigate(['/admin/products']);
   }
 
   selectImage(image: string): void {
