@@ -3,7 +3,7 @@ const util = require('util');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const Joi = require('joi');
-const User = require('../models/userModel');
+const User = require('../models/user-model');
 
 // Returns a version that returns promises.
 const jwtSign = util.promisify(jwt.sign);
@@ -25,18 +25,22 @@ const handleSignup = async (req, res) => {
       password,
     });
   } catch (err) {
-    return res.status(422).send(err);
+    return res.status(422).json(err);
   }
 
   const existingUser = await User.findOne({ email });
-  if (existingUser) return res.status(409).send('Email is already used.');
+  if (existingUser)
+    return res.status(409).json({ mssg: 'Email is already used.' });
 
   const user = new User({ email, password });
   console.log(user);
-
   await user.save();
 
-  res.status(200).send(user);
+  const token = await jwtSign({ userId: user._id }, process.env.JWT_SECRET, {
+    expiresIn: '1d',
+  });
+
+  res.status(200).json({ email, token });
 };
 
 const handleLogin = async (req, res) => {
@@ -44,7 +48,7 @@ const handleLogin = async (req, res) => {
 
   // Check if user exist
   const user = await User.findOne({ email });
-  if (!user) return res.send('User not found');
+  if (!user) return res.status(404).json({ mssg: 'User not found' });
 
   // If he exist match password
   const isMatched = await bcrypt.compare(password, user.password);
@@ -57,9 +61,9 @@ const handleLogin = async (req, res) => {
       expiresIn: '1d',
     });
 
-    res.status(200).send(token);
+    res.status(200).json({ email, token });
   } else {
-    res.send('Invalid email or password');
+    res.status(406).json({ mssg: 'Invalid email or password' });
   }
 };
 

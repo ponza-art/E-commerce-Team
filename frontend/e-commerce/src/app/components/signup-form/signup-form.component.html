@@ -1,0 +1,36 @@
+<form class="signup-form" #form="ngForm" (ngSubmit)="onSubmit(form)">
+  <span class="signup-form__title">Register An Account</span>
+  <div class="signup-form__field">
+    <input
+      class="signup-form__input"
+      type="email"
+      placeholder="Email address"
+      name="email"
+      ngModel
+      required
+      email
+      #email="ngModel"
+    />
+    @if (email.touched && email.dirty && email.invalid && !error) {
+    <span class="signup-form__err">Invalid Email address entered.</span>
+    } @if (error) {
+    <span class="signup-form__err">{{ error }}</span>
+    }
+  </div>
+  <div class="signup-form__field">
+    <input
+      class="signup-form__input"
+      type="password"
+      placeholder="Password"
+      name="password"
+      ngModel
+      required
+      minlength="8"
+      #password="ngModel"
+    />
+    @if (password.touched && password.dirty && password.invalid) {
+    <span class="signup-form__err">Must be at least 8 characters long.</span>
+    }
+  </div>
+  <button class="signup-form__btn">Register</button>
+</form>

@@ -1,0 +1,28 @@
+<section class="auth">
+  <h1 class="auth__title">My account</h1>
+
+  <div class="auth__content">
+    <div class="auth__btn-container">
+      <button
+        class="auth__btn"
+        [class.active]="isActiveloginForm"
+        (click)="onLoginClick()"
+      >
+        Login
+      </button>
+      <button
+        class="auth__btn"
+        [class.active]="isActiveRegisterForm"
+        (click)="onRegisterClick()"
+      >
+        Register
+      </button>
+    </div>
+
+    @if (showloginForm) {
+    <app-login-form />
+    } @else {
+    <app-signup-form />
+    }
+  </div>
+</section>
