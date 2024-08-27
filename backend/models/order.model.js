@@ -1,6 +1,5 @@
+
 import mongoose from "mongoose";
-
-
 const calculateDeliveryDate = () => {
   const orderDate = new Date();
   const deliveryDate = new Date(orderDate);
@@ -8,13 +7,14 @@ const calculateDeliveryDate = () => {
   return deliveryDate;
 };
 
-// Define the Order schema
+//Define the Order schema
 const orderSchema = new mongoose.Schema({
-  amount: {
+  amount: { //total price
     type: Number,
-    required: true,
+    required:false
+    // required: true,
   },
-  order: [
+  order: [//orderitem
     {
       productId: {
         type: mongoose.Schema.Types.ObjectId,
@@ -24,6 +24,10 @@ const orderSchema = new mongoose.Schema({
         type: Number,
         required: true,
       },
+      price:{
+        type:Number,
+        required:true
+      }
     },
   ],
   orderDate: {
@@ -38,34 +42,38 @@ const orderSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
+  status:{
+    type:String,
+    default:"pending"
+  },
   userDetails: {
     fullName: {
       type: String,
-      required: false,
+       required: false,
     },
     address: {
       type: String,
-      required: false,
+       required: false,
     },
     phone: {
       type: Number,
-      required: false,
+       required: false,
     },
     email: {
       type: String,
-      required: false,
+       required: false,
     },
     pincode: {
       type: Number,
-      required: false,
+       required: false,
     },
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User',
-      required: false,
+       required: false,
     },
   },
 }, { collection: 'Orders' });
 
-
 export default mongoose.model("Order", orderSchema);
+

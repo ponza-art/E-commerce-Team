@@ -4,7 +4,7 @@ import userRoutes from "./routes/userRoutes.js";
 import productRoutes from "./routes/productRoutes.js";
 import paymentRoutes from "./routes/paymentRoutes.js";
 import responseRoutes from "./routes/responseRoutes.js";
-
+import orderRoutes from "./routes/orderRoutes.js"
 export const app = express();
 
 app.use(cors());
@@ -20,3 +20,4 @@ app.use("/api", userRoutes);
 app.use("/api", productRoutes);
 app.use("/api", paymentRoutes);
 app.use("/api", responseRoutes);
+app.use('/api',orderRoutes)

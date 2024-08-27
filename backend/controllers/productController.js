@@ -31,12 +31,12 @@ export const getSomeProducts = async (req, res) => {
 export const createProduct = async (req, res) => {
   // extract role from header
   const token = req.headers.authorization.split(" ")[1];
-  const decoded = jwt.verify(token, process.env.SECRET_KEY);
-  const userRole = decoded.role;
+  // const decoded = jwt.verify(token, process.env.SECRET_KEY);
+  // const userRole = decoded.role;
 
-  if (userRole !== "admin") {
-    return res.status(403).json({ error: "You are unauthorized to do this" });
-  }
+  // if (userRole !== "admin") {
+  //   return res.status(403).json({ error: "You are unauthorized to do this" });
+  // }
 
   // get product details from body
   const {
