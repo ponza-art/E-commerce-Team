@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
   res.send("Welcome to Chrome Seconds backend");
 });
 
-app.use("/api", userRoutes);
-app.use("/api", productRoutes);
-app.use("/api", paymentRoutes);
-app.use("/api", responseRoutes);
+app.use("/", userRoutes);
+app.use("/", productRoutes);
+app.use("/", paymentRoutes);
+app.use("/", responseRoutes);
