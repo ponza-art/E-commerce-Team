@@ -4,13 +4,13 @@ dotenv.config();
 
 export const getAllOrders = async (req, res) => {
       // extract role from header
-  // const token = req.headers.authorization.split(" ")[1];
-  // const decoded = jwt.verify(token, process.env.SECRET_KEY);
-  // const userRole = decoded.role;
+  const token = req.headers.authorization.split(" ")[1];
+  const decoded = jwt.verify(token, process.env.SECRET_KEY);
+  const userRole = decoded.role;
 
-  // if (userRole !== "admin") {
-  //   return res.status(403).json({ error: "You are unauthorized to do this" });
-  // }
+  if (userRole !== "admin") {
+    return res.status(403).json({ error: "You are unauthorized to do this" });
+  }
 
 
   try {
@@ -24,13 +24,13 @@ export const getAllOrders = async (req, res) => {
 
 export const deleteOrderById = async (req, res) => {
   // Uncomment the role check if needed
-  // const token = req.headers.authorization.split(" ")[1];
-  // const decoded = jwt.verify(token, process.env.SECRET_KEY);
-  // const userRole = decoded.role;
+  const token = req.headers.authorization.split(" ")[1];
+  const decoded = jwt.verify(token, process.env.SECRET_KEY);
+  const userRole = decoded.role;
 
-  // if (userRole !== "admin") {
-  //   return res.status(403).json({ error: "You are unauthorized to do this" });
-  // }
+  if (userRole !== "admin") {
+    return res.status(403).json({ error: "You are unauthorized to do this" });
+  }
 
   const id = req.query.id;
 
