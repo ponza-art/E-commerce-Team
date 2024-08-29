@@ -13,7 +13,7 @@ app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
-  res.send("Welcome to Chrome Seconds backend");
+  res.send("Welcome to backend");
 });
 
 app.use("/", userRoutes);
