@@ -1,0 +1,15 @@
+*{
+ font-family:"Work Sans", Arial, sans-serif ;   
+}
+.upload{
+    height: 60px;
+}
+.input{
+    height: 50px;
+    width:100%;
+    
+    
+}
+input:focus{
+   outline: none;
+}

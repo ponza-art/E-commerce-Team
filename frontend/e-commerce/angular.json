@@ -27,9 +27,13 @@
               }
             ],
             "styles": [
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+               "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -85,15 +89,16 @@
               }
             ],
             "styles": [
+              "node_modules/bootstrap/scss/bootstrap.scss",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           }
         }
       }
     }
-  },
-  "cli": {
-    "analytics": "11b88e93-0fa9-4a7f-ab1c-adcaefbc0507"
   }
 }

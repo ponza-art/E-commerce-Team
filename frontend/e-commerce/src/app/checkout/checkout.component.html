@@ -1,0 +1,77 @@
+<div class="  container-lg container-xl    ">
+
+    <!-- <div class="d-flex justify-content-center align-items-center p-5 ">
+       <h1 class="text-center my-3 fw-bold"> Check Out </h1>
+    </div> -->
+
+     <div class="row d-flex  col-12 gx-5 d-flex justify-content-center align-items-center ">
+      <!-- <div class="  col-md-12 col-lg-6 col-xl-6 d-flex flex-column  ">
+        <h4 class="my-4">Biling details</h4>
+        <form action="#" method="post">
+            <label class=" mb-2 text-secondary" for="fname">First Name<span class="text-danger mx-1 fw-bold fs-5">*</span></label>
+            <input type="text" name="FirstName" id="fname" class=" px-3 inputcheck" placeholder="First Name"/>
+            <label class=" mb-2 text-secondary" for="fname">Last Name<span class="text-danger mx-1 fw-bold fs-5">*</span></label>
+            <input type="text" name="LastName" id="fname" class=" px-3 inputcheck" placeholder=":Last Name"/>
+            <label class=" mb-2 text-secondary" for="fname">Company Name<span class="text-danger mx-1 fw-bold fs-5">*</span></label>
+            <input type="text" name="CompanyName" id="fname" class=" px-3 inputcheck" placeholder="Company Name"/>
+            <label class=" mb-2 text-secondary" for="fname">Country<span class="text-danger mx-1 fw-bold fs-5">*</span></label>
+            <input type="text" name="Country" id="fname" class=" px-3 inputcheck" placeholder="Country"/>
+            <label class=" mb-2 text-secondary" for="fname">Street address<span class="text-danger mx-1 fw-bold fs-5">*</span></label>
+            <input type="text" name="Street address" id="fname" class=" px-3 inputcheck" placeholder="Street address"/>
+            <label class=" mb-2 text-secondary" for="fname">Zip Code<span class="text-danger mx-1 fw-bold fs-5">*</span></label>
+            <input type="text" name="Zip Code" id="fname" class=" px-3 inputcheck" placeholder="Zip Code"/>
+            <label class=" mb-2 text-secondary" for="fname">Phone<span class="text-danger mx-1 fw-bold fs-5">*</span></label>
+            <input type="text" name="Phone" id="fname" class=" px-3 inputcheck" placeholder="Phone"/>
+            <label class=" mb-2 text-secondary" for="fname">Email<span class="text-danger mx-1 fw-bold fs-5">*</span></label>
+            <input type="text" name="Email" id="fname" class=" px-3 inputcheck" placeholder="Email address"/>
+            <label class=" mb-2 text-secondary" for="fname">Delivery Locaton<span class="text-danger mx-1 fw-bold fs-5">*</span></label>
+           <input class=" inputcheck px-3  " type="search" value="" placeholder="search" id="example-search-input">
+          </form>       
+              
+          
+            
+      </div>
+       -->
+      <div class="col-lg-12 col-xl-6  mb-3   py-3  " >
+        <h4 class="my-4 text-center">Your order</h4>
+        <div class="px-2 bg-light border-1 border w-100">
+         <div class="d-flex justify-content-between p-3 py-4 border-bottom">
+          <div>
+            <span class="text-secondary fw-bold">PRODUCT:</span>
+            @for(item of  product; track $index){
+            <div class="pt-2">
+              <span class="me-3 text-dark">{{item.productName}}</span>
+              <span class="me-3 text-dark">x{{item.quantity}}</span>
+              <span class="me-3 text-dark">brand:{{ item.brand  }}</span>
+              <span class=" text-dark ">totalprice: {{ item.totalprice | number:'1.2-2' }}</span>
+            </div>
+            
+          }
+          </div>
+          
+          
+          
+           
+         </div>
+         <div class="d-flex justify-content-between p-3  py-4 border-bottom">
+          <span>Count of cart</span>
+          <span>{{ countcart }}</span>
+          
+         </div>
+         <div class="d-flex justify-content-between p-3  py-4 border-bottom">
+          <span>SUBTOTAL</span>
+          <span>{{ totalprice | number:'1.2-2' }}</span>
+          
+         </div>
+         
+         <div class="d-flex justify-content-between p-3  py-4 border-bottom">
+          <span class="fw-bold">TOTAL</span>
+          <span class="text-danger">{{ totalprice | number:'1.2-2' }}</span>
+         </div>
+        </div>
+        <button type="button" class="btn btn-warning p-3 text-black mt-4 w-100 my-2 mt-3 fw-bold "> Place Order </button>
+      </div>
+</div>
+
+     </div>
+   
