@@ -1,10 +1,27 @@
 import Order from "../models/order.model.js";
 import orderValidateSchema from "../models/validataOrderSchemaJoi.js";
-import Product from "../models/product.model.js"
+import Product from "../models/product.model.js";
 
 export const getOrder = async (req, res) => {
   try {
     const order = await Order.find();
+
+    if (!order || order.length === 0) {
+      return await res.status(404).send("No orders found");
+    }
+
+    return await res.status(200).json(order);
+  } catch (error) {
+    return await res
+      .status(500)
+      .send("An error occurred while fetching orders");
+  }
+};
+export const getOrderById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log("id" + id);
+    const order = await Order.findById(id);
 
     if (!order || order.length === 0) {
       return res.status(404).send("No orders found");
@@ -25,17 +42,20 @@ export const createOrder = async (req, res) => {
     if (!req.user) {
       return res.status(401).json({ message: "User not authenticated" });
     }
-   
-    const orderItems = req.body.order;
+    await Order.deleteMany({ userId: req.user._id }); //new
+    const orderItems = await req.body.order;
     for (let item of orderItems) {
       const product = await Product.findById(item.productId);
       if (product) {
         item.price = product.price;
+        
       } else {
-        return res.status(404).json({ message: `Product with ID ${item.productId} not found` });
+        return res
+          .status(404)
+          .json({ message: `Product with ID ${item.productId} not found` });
       }
     }
-     
+
     const calculateTotalPrice = (order) => {
       return order.reduce((total, item) => {
         return total + item.quantity * item.price;
@@ -43,11 +63,11 @@ export const createOrder = async (req, res) => {
     };
 
     const totalPrice = calculateTotalPrice(orderItems);
-      
+
     const newOrder = new Order({
       amount: totalPrice,
       order: orderItems,
-      
+
       // userDetails: {
       //   fullName: req.user.fullName,
       //   address: req.body.address,
@@ -68,6 +88,7 @@ export const createOrder = async (req, res) => {
   }
 };
 
+///////////////////////////////////////////////////////////
 export const cancelOrder = async (req, res) => {
   try {
     const { id } = req.params;
@@ -83,7 +104,9 @@ export const cancelOrder = async (req, res) => {
       case "pending":
         order.status = "canceled";
         await order.save();
-        res.status(200).json({massege:"order has been canceled succesfully",order});
+        res
+          .status(200)
+          .json({ massege: "order has been canceled succesfully", order });
         break;
       default:
         res.status(400).send("you canot cancel this order");

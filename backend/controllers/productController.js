@@ -6,7 +6,7 @@ dotenv.config();
 
 // function to get all products
 export const getAllProducts = async (req, res) => {
-  console.log(req.query);
+  // await console.log( req);
   try {
     const products = await ProductModel.find(req.query);
     res.status(200).json(products);

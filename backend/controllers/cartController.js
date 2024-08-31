@@ -9,11 +9,12 @@ dotenv.config();
 
 export const addCart = async (req, res) => {
   const { productId, quantity } = req.body;
-  // separate the id from token
+   try{
+      // separate the id from token
   if (!req.headers.authorization) {
     return res.status(401).json({ message: "Authorization header is missing" });
   }
-  const token = req.headers.authorization.split(" ")[1];
+  const token = req.headers.authorization.split(' ')[1];
   const decoded = jwt.verify(token, process.env.SECRET_KEY);
   const userId = decoded.id;
 
@@ -50,7 +51,11 @@ export const addCart = async (req, res) => {
     }
 
     res.status(200).json({ message: "Product added successfully" });
-  } catch (error) {
+  }catch(error){
+    console.log(error)
+  }
+   }catch (error) {
+ 
     console.error("Error adding product to cart:", error);
     res
       .status(500)
@@ -60,12 +65,13 @@ export const addCart = async (req, res) => {
 
 export const getCart = async (req, res) => {
   // Extract token from headers
+  try {
   const token = req.headers.authorization.split(" ")[1];
   const decoded = jwt.verify(token, process.env.SECRET_KEY);
   const userId = decoded.id;
   // const { userId } = req.body
 
-  try {
+ 
     const user = await UserModel.findById(userId).populate("cart.productId");
 
     if (!user) {
