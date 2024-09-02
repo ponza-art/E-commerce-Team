@@ -1,0 +1,19 @@
+/* Cards Section */
+.card-icon {
+    top: -30px;
+    color: #fcb800; /* Match header color */
+  }
+  
+  /* Get In Touch Section */
+  .form-control {
+    border: 1px solid #dee2e6;
+    border-radius: .375rem;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 767px) {
+    .card-icon {
+      top: -20px;
+    }
+  }
+  

@@ -1,0 +1,95 @@
+/* General container styling */
+.container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .image-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  
+  .zoomed-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    opacity: 0;
+  }
+  
+  /* Gallery styling */
+  .image-gallery {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .image-gallery img {
+    cursor: pointer;
+  }
+  
+  /* Star rating styling */
+  .star-rating {
+    font-size: 15px;
+  }
+  
+  .empty {
+    color: #ddd;
+  }
+  
+  /* Pricing option styling */
+  .pricing-option {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Quantity selector styling */
+  .quantity-selector {
+    display: flex;
+    align-items: center;
+  }
+  
+  .quantity-selector .btn {
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    font-size: 16px;
+  }
+  
+  .quantity-selector .form-control {
+    max-width: 60px;
+    border: none;
+    text-align: center;
+    background-color: #f5f5f5;
+  }
+  
+  /* Availability status */
+  .availability-status {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  
+  /* Button styling */
+  .btn-warning {
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+  
+  .card-image {
+    position: relative;
+    overflow: hidden;
+     /* display: inline-block; */
+    height: 350px;
+  }
+  
+  .card-image img {
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  

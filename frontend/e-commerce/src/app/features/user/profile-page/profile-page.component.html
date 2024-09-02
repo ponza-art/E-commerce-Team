@@ -1,0 +1,212 @@
+<div class="profile-container">
+
+    <div
+      class="profile-container__wrapper"
+      [ngClass]="{ 'blur-div': showPasswordInputs }" data-aos="zoom-in-up"
+    >
+      <!-- profile left section  -->
+      <div class="profile-container__profile-left-section">
+        <!-- user image div start -->
+        <div class="profile-container__user-image" (click)="fileInput.click()">
+          @if (userprofileImage) {
+          <img
+            #userImage
+            [src]="userprofileImage"
+            alt="Selected profile picture"
+          />
+          }@else {
+          <img src="../../../../assets/images/default/default-user.jpeg" alt="" />
+          }
+          <input
+            #fileInput
+            type="file"
+            accept="image/*"
+            (change)="onFileSelected($event)"
+            style="display: none"
+          />
+        </div>
+        <!-- user image div end -->
+  
+        <div class="profile-container__user-name-card">
+          <h1>{{ profileForm.get("fullName")?.value }}</h1>
+          <p>{{ profileForm.get("email")?.value }}</p>
+        </div>
+  
+        <div class="profile-container__user-address-card">
+          @if (profileForm.value.address) {
+            <p style="font-weight: 700;">Delivery Address:</p>
+          <p>{{ profileForm.get("address")?.value }}</p>
+          }@else {
+          <p style="color: #ff0000;">Delivery address not added</p>
+          }
+        </div>
+  
+        <div class="profile-container__logout-btn-section">
+          <button (click)="logout()">Logout</button>
+        </div>
+      </div>
+  
+      <!-- profile right section  -->
+      <div class="profile-container__profile-details-right-section">
+        <h1>Account Details</h1>
+  
+        <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+          <div class="profile-container__form-group">
+            <label for="fullName" id="fullName">Name:</label>
+            <input
+              class="profile-container__form-control"
+              type="text"
+              formControlName="fullName"
+              [readonly]="!isUpdating"
+              [ngClass]="{ 'updating-details': isUpdating }"
+            />
+            @if (profileForm.get('fullName')?.hasError('required')) {
+            <small>Name is required</small>
+            }
+          </div>
+  
+          <div class="profile-container__form-group">
+            <label for="email" id="email">Email:</label>
+            <input
+              class="profile-container__form-control"
+              type="text"
+              formControlName="email"
+              [readonly]="!isUpdating"
+              [ngClass]="{ 'updating-details': isUpdating }"
+            />
+            @if (profileForm.get('email')?.hasError('required')) {
+            <small>Email is required</small>
+            }
+          </div>
+  
+          <div class="profile-container__form-group">
+            <label for="phone" id="phone">Phone:</label>
+            <input
+              class="profile-container__form-control"
+              type="number"
+              formControlName="phone"
+              [readonly]="!isUpdating"
+              [ngClass]="{ 'updating-details': isUpdating }"
+            />
+            @if (profileForm.get('phone')?.hasError('required')) {
+            <small>Phone number is required</small>
+            }@else if (profileForm.get('phone')?.hasError('minlength')) {
+            <small>Enter a valid phone number</small>
+            }@else if (profileForm.get('phone')?.hasError('maxlength')) {
+            <small>Enter a valid phone number</small>
+            }
+          </div>
+  
+          <div class="profile-container__form-group">
+            <label for="pincode" id="pincode">PIN Code:</label>
+            <input
+              class="profile-container__form-control"
+              type="number"
+              formControlName="pincode"
+              [readonly]="!isUpdating"
+              [ngClass]="{ 'updating-details': isUpdating }"
+            />
+            @if (profileForm.get('pincode')?.hasError('required')) {
+            <small>Pincode is required</small>
+            }@else if (profileForm.get('pincode')?.hasError('minlength')) {
+            <small>Enter a valid pincode</small>
+            }@else if (profileForm.get('pincode')?.hasError('maxlength')) {
+            <small>Enter a valid pincode</small>
+            }
+          </div>
+  
+          <div
+            class="profile-container__form-group profile-container__form-group--address"
+          >
+            <label for="address" id="address">Address:</label>
+            <textarea
+              class="profile-container__form-control profile-container__form-control--address-input"
+              type="text"
+              formControlName="address"
+              [readonly]="!isUpdating"
+              [ngClass]="{ 'updating-details': isUpdating }"
+            ></textarea>
+            @if (profileForm.get('address')?.hasError('required')) {
+            <small>Address is required</small>
+            }
+          </div>
+  
+          <div
+            class="profile-container__form-group profile-container__form-group--btn"
+          >
+            <button class="password-change-btn" type="button" (click)="changePassword()">
+              Change password
+            </button>
+          </div>
+  
+          <div
+            class="profile-container__form-group profile-container__form-group--btn"
+          >
+            <button type="submit" class="update-details-btn">
+              {{ isUpdating ? "Save" : "Update Profile" }}
+            </button>
+          </div>
+        </form>
+        <!-- when update password clicked  -->
+  
+  
+  
+      </div>
+    </div>
+    @if (showPasswordInputs) {
+      <div class="profile-container__password-change-form" data-aos="zoom-in-up">
+      <form [formGroup]="updatePasswordForm" (ngSubmit)="onPasswordSubmit()">
+        <div class="profile-container__form-group">
+          <label for="currentPassword">Current Password:</label>
+          <input type="password" id="currentPassword" formControlName="currentPassword" class="profile-container__form-control">
+          @if (updatePasswordForm.get('currentPassword')?.invalid && updatePasswordForm.get('currentPassword')?.touched) {
+            <small class="error-msg">Current Password is required</small>
+          }
+        </div>
+      
+        <div class="profile-container__form-group">
+          <label for="newPassword">New Password:</label>
+          <input type="password" id="newPassword" formControlName="newPassword" class="profile-container__form-control">
+          @if (updatePasswordForm.get('newPassword')?.invalid && updatePasswordForm.get('newPassword')?.touched) {
+            <small class="error-msg">
+              @if (updatePasswordForm.get('newPassword')?.hasError('required')) {
+                <ng-container>New Password is required</ng-container>
+              }@else if (updatePasswordForm.get('newPassword')?.hasError('tooShort')) {
+                <ng-container>Password must be at least 5 characters long</ng-container>
+              }@else if (updatePasswordForm.get('newPassword')?.hasError('noUppercase')) {
+                <ng-container>Password must contain at least one uppercase character</ng-container>
+              }@else if (updatePasswordForm.get('newPassword')?.hasError('noLowercase')) {
+                <ng-container>Password must contain at least one lowercase character</ng-container>
+              }@else if (updatePasswordForm.get('newPassword')?.hasError('noNumber')) {
+                <ng-container>Password must contain at least one number</ng-container>
+              }
+            </small>
+          }
+        </div>
+      
+        <div class="profile-container__form-group">
+          <label for="confirmPassword">Confirm Password:</label>
+          <input type="password" id="confirmPassword" formControlName="confirmPassword" class="profile-container__form-control">
+          @if (updatePasswordForm.get('confirmPassword')?.invalid && updatePasswordForm.get('confirmPassword')?.touched) {
+            <small class="error-msg">
+              @if (updatePasswordForm.get('confirmPassword')?.hasError('required')) {
+                <ng-container>Confirm Password is required</ng-container>
+              }@else if (updatePasswordForm.get('confirmPassword')?.hasError('misMatch')) {
+                <ng-container>Passwords do not match</ng-container>
+              }
+            </small>
+          }
+        </div>
+      
+        <div class="profile-container__change-window-btns">
+          <button (click)="closePasswordForm()" class="cancel-btn">Cancel</button>
+          <button type="submit" class="save-btn">Save</button>
+        </div>
+      </form>
+  
+    </div>
+    }
+    <div *ngIf="showPasswordInputs" class="overlay"></div>
+  </div>
+  
+  

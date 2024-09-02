@@ -1,0 +1,73 @@
+<div class="orders-container">
+    <button class="orders-back-btn btn btn-warning" (click)="navigateBack()">
+      Go Back
+    </button>
+    <h1 class="orders-title">All Orders</h1>
+  
+    <div *ngIf="showOrder" class="orders-details-div">
+      <div class="close-btn-wrapper">
+        <button class="btn btn-outline-danger" (click)="closeOrder()">
+          <img src="../../../../assets/icons/cancel.png" alt="" />
+        </button>
+      </div>
+  
+      <div class="orders-items-container">
+        <div *ngFor="let item of currentOrder" class="orders-item">
+          <div class="orders-item-image">
+            <img *ngIf="item.productId.images" [src]="item.productId.images[0]" alt="" />
+          </div>
+          <div class="orders-product-details">
+            <h6>{{ item.productId.productName }}</h6>
+            <p>Color: {{ item.productId.color }}</p>
+            <p>Watch Code: {{ item.productId.productId }}</p>
+          </div>
+          <div class="orders-product-quantity">
+            <p>Quantity: {{ item.quantity }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div *ngIf="showOrder" class="orders-overlay"></div>
+  
+    <div class="orders-table-wrapper">
+      <table class="orders-table table table-hover align-middle">
+        <thead class="bg-black">
+          <tr>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Delivery Address</th>
+            <th>PIN Code</th>
+            <th>Order Details</th>
+            <th>Ordered Date</th>
+            <th>Delivery Date</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of orders">
+            <td>{{ order.userDetails.fullName }}</td>
+            <td>{{ order.userDetails.email }}</td>
+            <td>{{ order.userDetails.phone }}</td>
+            <td>{{ order.userDetails.address }}</td>
+            <td>{{ order.userDetails.pincode }}</td>
+            <td class="order-link">
+              <button class="orders-view-btn btn btn-outline-success" (click)="openOrder(order.order)">View Order</button>
+            </td>
+            <td>{{ order.orderDate }}</td>
+            <td>{{ order.deliveryDate }}</td>
+            <td style="text-align: center">
+              <button class="orders-delete-btn btn btn-outline-danger" (click)="deleteOrder(order._id)">
+                <img src="../../../../assets/icons/delete.png" alt="" />
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="orders.length === 0">
+            <td colspan="9" class="orders-no-orders">No orders found</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

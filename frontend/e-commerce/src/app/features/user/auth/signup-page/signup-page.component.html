@@ -1,0 +1,106 @@
+<div class="" style="margin: 50px 0 40px">
+    <div class="mx-auto signup-form">
+      <form class="m-2" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <p class="fs-5">Register An Account</p>
+  
+        <div class="signup-form__field">
+          <input
+            class="signup-form__input"
+            type="text"
+            formControlName="fullName"
+            placeholder="Full Name"
+          />
+          <span
+            *ngIf="formSubmitted && signupForm.get('fullName')?.invalid"
+            class="signup-form__err"
+          >
+            <ng-container *ngIf="signupForm.get('fullName')?.hasError('required')"
+              >Name is required</ng-container
+            >
+            <ng-container
+              *ngIf="signupForm.get('fullName')?.hasError('minlength')"
+              >Name must be at least 3 characters long</ng-container
+            >
+            <ng-container
+              *ngIf="signupForm.get('fullName')?.hasError('maxlength')"
+              >Name is too long</ng-container
+            >
+          </span>
+        </div>
+  
+        <div class="signup-form__field">
+          <input
+            class="signup-form__input"
+            type="email"
+            formControlName="email"
+            placeholder="Email address"
+          />
+          <span
+            *ngIf="formSubmitted && signupForm.get('email')?.invalid"
+            class="signup-form__err"
+          >
+            <ng-container *ngIf="signupForm.get('email')?.hasError('required')"
+              >Email is required</ng-container
+            >
+            <ng-container *ngIf="signupForm.get('email')?.hasError('email')"
+              >Invalid email format</ng-container
+            >
+          </span>
+        </div>
+  
+        <div class="signup-form__field">
+          <input
+            class="signup-form__input"
+            type="password"
+            formControlName="password"
+            placeholder="Password"
+          />
+          <span
+            *ngIf="formSubmitted && signupForm.get('password')?.invalid"
+            class="signup-form__err"
+          >
+            <ng-container *ngIf="signupForm.get('password')?.hasError('required')"
+              >Password is required</ng-container
+            >
+            <ng-container
+              *ngIf="signupForm.get('password')?.hasError('minlength')"
+              >Password must be at least 8 characters long</ng-container
+            >
+            <ng-container *ngIf="signupForm.get('password')?.hasError('pattern')"
+              >Password must contain at least one uppercase letter, one lowercase
+              letter, and one number</ng-container
+            >
+          </span>
+        </div>
+  
+        <div class="signup-form__field">
+          <input
+            class="signup-form__input"
+            type="password"
+            formControlName="confirmPassword"
+            placeholder="Confirm Password"
+          />
+          <span
+            *ngIf="formSubmitted && signupForm.get('confirmPassword')?.invalid"
+            class="signup-form__err"
+          >
+            <ng-container
+              *ngIf="signupForm.get('confirmPassword')?.hasError('required')"
+              >Re-enter your password</ng-container
+            >
+            <ng-container
+              *ngIf="signupForm.get('confirmPassword')?.hasError('mismatch')"
+              >Passwords do not match</ng-container
+            >
+          </span>
+        </div>
+  
+        <button class="signup-form__btn" type="submit">Register</button>
+      </form>
+      <p class="mx-auto mt-3 mb-0">
+        Already Have an Account!
+        <a class="text-decoration-none" routerLink="/login">Login</a>
+      </p>
+    </div>
+  </div>
+  

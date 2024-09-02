@@ -1,0 +1,159 @@
+<div class="carousel-container">
+    <div id="carouselExample" class="carousel slide">
+      <div class="carousel-inner vh-100">
+        <div class="carousel-item active">
+          <a routerLink="/products">
+            <img
+              src="../../../../assets/images/Watch Hero section.jpg"
+              class="d-block w-100"
+              alt="hero1"
+              style="cursor: pointer"
+            />
+          </a>
+        </div>
+        <div class="carousel-item">
+          <img
+            src="https://rodericogiuliani.com/cdn/shop/collections/Hero_section_3_copy.jpg?v=1696940814"
+            class="d-block w-100"
+            alt="hero2"
+          />
+        </div>
+        <div class="carousel-item">
+          <img
+            src="https://gshock.casio.com/content/casio/locales/europe/en-gb/brands/gshock/products/master-of-g/_jcr_content/root/responsivegrid/teaser.casiocoreimg.jpeg/1709859834434/homepage-pc-gwg-2000.jpeg"
+            class="d-block w-100"
+            alt="hero3"
+          />
+        </div>
+      </div>
+  
+      <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselExample"
+        data-bs-slide="prev"
+      >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselExample"
+        data-bs-slide="next"
+      >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+  
+  <div class="pt-5 pb-3 bg-white" id="top-products">
+    <div class="container">
+      <h3 class="text-center mb-5">Top Products</h3>
+      <div class="row justify-content-center">
+        <div class="col-md-12">
+          <div class="row">
+            @if(allProducts.length != 0){ @for (product of allProducts; track
+            $index ) {
+            <div class="col-lg-3 col-md-4 col-sm-6 col-12 mb-4">
+              <div
+                class="col h-100 product-card"
+                [routerLink]="'products/watch/' + product._id"
+              >
+                <app-products-section
+                  [productData]="product"
+                ></app-products-section>
+              </div>
+            </div>
+            } } @else{
+            <p class="text-center">No Products Found</p>
+            }
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="bg-white py-5 about-section">
+    <div class="container">
+      <div class="d-flex align-items-center justify-content-center gap-5">
+        <img
+          src="https://gordon-watches-preview-com.3dcartstores.com/assets/templates/gordonwatches-core/images/gear.png"
+          alt="about"
+          class="about-img w-50"
+        />
+        <div class="text-center about-text">
+          <h1 class="about-title">What Makes us Tick</h1>
+          <h3 class="about-subtitle">A look behind the scenes</h3>
+          <p class="about-description">
+            Welcome to Watch & Wear, your destination for exceptional watches. We
+            offer a carefully curated selection of timepieces that blend classic
+            elegance with modern innovation. Each watch in our collection is
+            chosen for its quality and style, designed to be a lasting companion
+            for life’s moments.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="brands-wrapper mb-5">
+    <div class="brand-item item1 d-flex justify-content-center align-content-center bg-light">
+      <img
+        src="../../../../assets/images/jaec.png"
+        alt="jaec"
+        class="brand-img"
+      />
+    </div>
+    <div class="brand-item item2 d-flex justify-content-center align-content-center bg-light">
+      <img
+        src="../../../../assets/images/fortis.png"
+        alt="fortis"
+        class="brand-img"
+      />
+    </div>
+    <div class="brand-item item3 d-flex justify-content-center align-content-center bg-light">
+      <img
+        src="../../../../assets/images/breg.png"
+        alt="breg"
+        class="brand-img"
+      />
+    </div>
+    <div class="brand-item item4 d-flex justify-content-center align-content-center bg-light">
+      <img
+        src="../../../../assets/images/emporio.png"
+        alt="emporio"
+        class="brand-img"
+      />
+    </div>
+    <div class="brand-item item5 d-flex justify-content-center align-content-center bg-light">
+      <img
+        src="../../../../assets/images/orient.png"
+        alt="orient"
+        class="brand-img"
+      />
+    </div>
+    <div class="brand-item item6 d-flex justify-content-center align-content-center bg-light">
+      <img
+        src="../../../../assets/images/seiko.png"
+        alt="seiko"
+        class="brand-img"
+      />
+    </div>
+    <div class="brand-item item7 d-flex justify-content-center align-content-center bg-light">
+      <img
+        src="../../../../assets/images/puma.png"
+        alt="puma"
+        class="brand-img"
+      />
+    </div>
+    <div class="brand-item item8 d-flex justify-content-center align-content-center bg-light">
+      <img
+        src="../../../../assets/images/rolex-black.png"
+        alt="rolex"
+        class="brand-img"
+      />
+    </div>
+  </div>
+  

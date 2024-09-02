@@ -1,0 +1,53 @@
+<div class="login-form mx-auto" style="margin: 50px 0 40px">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <span class="login-form__title">Login Your Account</span>
+  
+      <div class="login-form__field">
+        <input
+          class="login-form__input"
+          type="email"
+          placeholder="Email address"
+          formControlName="email"
+        />
+        <span
+          class="login-form__err"
+          *ngIf="
+            loginForm.get('email')?.touched && loginForm.get('email')?.invalid
+          "
+        >
+          Invalid Email address entered.
+        </span>
+      </div>
+  
+      <div class="login-form__field">
+        <input
+          class="login-form__input"
+          type="password"
+          placeholder="Password"
+          formControlName="password"
+        />
+        <span
+          class="login-form__err"
+          *ngIf="
+            loginForm.get('password')?.touched &&
+            loginForm.get('password')?.invalid
+          "
+        >
+          Must be at least 8 characters long.
+        </span>
+      </div>
+  
+      <div *ngIf="error" class="login-form__err">
+        {{ error }}
+      </div>
+  
+      <button class="login-form__btn" type="submit" [disabled]="formSubmitted">
+        Login
+      </button>
+    </form>
+    <p class="mt-3 mb-0">
+      Don't Have an Account!
+      <a class="text-decoration-none" routerLink="/signup">Sign Up</a>
+    </p>
+  </div>
+  

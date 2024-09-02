@@ -1,0 +1,68 @@
+.login-form {
+    background-color: #fff;
+    font-family: "Work Sans", sans-serif;
+    max-width: 400px;
+    min-width: 360px;
+    border: 1px solid #e8e8e8;
+    border-radius: 4px;
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login-form__title {
+    font-size: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .login-form__field {
+    width: 100%;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .login-form__input {
+    font-family: inherit;
+    font-size: 16px;
+    color: inherit;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
+    padding: 12px 16px;
+  }
+  
+  .login-form__btn {
+    cursor: pointer;
+    margin-top: 8px;
+    width: 100%;
+    border: none;
+    border-radius: 4px;
+    background-color: #fcb800;
+    padding: 16px 0;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 600;
+  
+    transition: all 0.4s;
+  }
+  
+  .login-form__btn:hover,
+  .login-form__btn:active {
+    background-color: #e5a800;
+  }
+  
+  .login-form__err {
+    font-size: 14px;
+    color: #fc1900;
+  }
+  
+  .control:has(.ng-invallid.ng-touched.ng-dirty) label {
+    color: #f98b75;
+  }
+  
+  input.ng-invalid.ng-touched.ng-dirty {
+    background-color: #fbdcd6;
+    border-color: #f84e2c;
+  }
+  

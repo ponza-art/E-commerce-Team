@@ -1,0 +1,170 @@
+<!-- Cards Section -->
+<div class="container py-5 bg-light">
+    <div class="row">
+      <!-- Card 1: Contact Directly -->
+      <div class="col-md-4 mb-4">
+        <div class="card text-center border-0 shadow-sm my-3">
+          <div class="card-body position-relative">
+            <div
+              class="card-icon position-absolute top-0 start-50 translate-middle"
+            >
+            <fa-icon [icon]="phone" class="fa-solid fa-phone fa-2xl text-black border border-5 p-2 px-3 border-warning rounded-circle bg-warning"></fa-icon>
+            </div>
+            <h3 class="card-title mt-4">Contact Directly</h3>
+            <p class="card-text">contact{{ test }}<br />(+004) 912-3548-07</p>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2: Head Quarters -->
+      <div class="col-md-4 mb-4">
+        <div class="card text-center border-0 shadow-sm">
+          <div class="card-body position-relative">
+            <div
+              class="card-icon position-absolute top-0 start-50 translate-middle"
+            >
+            <fa-icon [icon]="building" class="fa-solid fa-phone fa-2x text-black border border-5 p-2 px-3 border-warning rounded-circle bg-warning"></fa-icon>
+            </div>
+            <h3 class="card-title mt-4">Head Quarters</h3>
+            <p class="card-text">
+              17 Queen St, Southbank, Melbourne<br />10560, Australia
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3: Work With Us -->
+      <div class="col-md-4 mb-4">
+        <div class="card text-center border-0 shadow-sm">
+          <div class="card-body position-relative">
+            <div
+              class="card-icon position-absolute top-0 start-50 translate-middle"
+            >
+            <fa-icon [icon]="briefcase" class="fa-solid fa-phone fa-2x text-black border border-5 p-2 px-3 border-warning rounded-circle bg-warning"></fa-icon>
+            </div>
+            <h3 class="card-title mt-4">Work With Us</h3>
+            <p class="card-text">
+              Send your CV to our email:<br />career{{ test }}
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Card 4: Customer Service -->
+      <div class="col-md-4 mb-4">
+        <div class="card text-center border-0 shadow-sm">
+          <div class="card-body position-relative">
+            <div
+              class="card-icon position-absolute top-0 start-50 translate-middle"
+            >
+            <fa-icon [icon]="headset" class="fa-solid fa-phone fa-2x text-black border border-5 p-2 px-3 border-warning rounded-circle bg-warning"></fa-icon>
+            </div>
+            <h3 class="card-title mt-4">Customer Service</h3>
+            <p class="card-text">customercare{{ test }}<br />(800) 843-2446</p>
+          </div>
+        </div>
+      </div>
+      <!-- Card 5: Media Relations -->
+      <div class="col-md-4 mb-4">
+        <div class="card text-center border-0 shadow-sm">
+          <div class="card-body position-relative">
+            <div
+              class="card-icon position-absolute top-0 start-50 translate-middle"
+            >
+            <fa-icon [icon]="bullhorn" class="fa-solid fa-phone fa-2x text-black border border-5 p-2 px-3 border-warning rounded-circle bg-warning"></fa-icon>
+            </div>
+            <h3 class="card-title mt-4">Media Relations</h3>
+            <p class="card-text">media{{ test }}<br />(801) 947-3564</p>
+          </div>
+        </div>
+      </div>
+      <!-- Card 6: Vendor Support -->
+      <div class="col-md-4 mb-4">
+        <div class="card text-center border-0 shadow-sm">
+          <div class="card-body position-relative">
+            <div
+              class="card-icon position-absolute top-0 start-50 translate-middle"
+            >
+            <fa-icon [icon]="tools" class="fa-solid fa-phone fa-2x text-black border border-5 p-2 px-3 border-warning rounded-circle bg-warning"></fa-icon>
+            </div>
+            <h3 class="card-title mt-4">Vendor Support</h3>
+            <p class="card-text">vendorsupport{{ test }}<br />(801) 947-3100</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Get In Touch Section -->
+  <div class="container py-5">
+    <h2 class="text-center mb-4">Get In Touch</h2>
+    <div class="row">
+      <div class="col-md-12">
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Name*"
+                formControlName="fullName"
+              />
+              <ng-container *ngIf="isFormSubmitted">
+                <small
+                  class="text-danger"
+                  *ngIf="contactForm.get('fullName')?.hasError('required')"
+                  >Name is required</small
+                >
+              </ng-container>
+            </div>
+            <div class="col-md-6 mb-3">
+              <input
+                type="email"
+                class="form-control"
+                placeholder="Email*"
+                formControlName="email"
+              />
+              <ng-container *ngIf="isFormSubmitted">
+                <small
+                  class="text-danger"
+                  *ngIf="contactForm.get('email')?.hasError('required')"
+                  >Email is required</small
+                >
+                <small
+                  class="text-danger"
+                  *ngIf="contactForm.get('email')?.hasError('email')"
+                  >Invalid email</small
+                >
+              </ng-container>
+            </div>
+            <div class="col-md-12 mb-3">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Subject (Optional)"
+                formControlName="subject"
+              />
+            </div>
+            <div class="col-md-12 mb-3">
+              <textarea
+                class="form-control"
+                rows="5"
+                placeholder="Message"
+                formControlName="message"
+              ></textarea>
+              <ng-container *ngIf="isFormSubmitted">
+                <small
+                  class="text-danger"
+                  *ngIf="contactForm.get('message')?.hasError('required')"
+                  >Message is required</small
+                >
+              </ng-container>
+            </div>
+            <div class="col-md-12 text-center">
+              <button type="submit" class="btn btn-warning text-black">
+                Post Comment
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  

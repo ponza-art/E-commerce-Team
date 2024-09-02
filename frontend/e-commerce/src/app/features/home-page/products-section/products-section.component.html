@@ -1,0 +1,43 @@
+
+<div class="card h-100 border-0 bg-transparent product-card">
+    <div class="d-flex justify-content-center position-relative">
+      @if(productData?.isAvailable){
+      <div
+        class="rounded-4 position-absolute p-1 text-white text-center stock-status in-stock"
+      >
+        In Stock
+      </div>
+      }@else {
+      <div
+        class="rounded-4 position-absolute p-1 text-white text-center stock-status out-of-stock"
+      >
+        Out Of Stock
+      </div>
+      }
+      <img
+        [src]="productData?.images[0]"
+        class="card-img-top img-fluid product-image"
+        [routerLink]="'watch/' + productData._id"
+        [alt]="productData?.images[0]"
+      />
+    </div>
+    <div class="card-body">
+      <h5
+        class="card-title link-primary product-title"
+        [routerLink]="'watch/' + productData._id"
+      >
+        {{ productData?.productName }}
+      </h5>
+      <div class="d-flex justify-content-between align-items-center">
+        <p class="m-0 p-0 product-price">{{ productData?.price }} $</p>
+        <div class="d-flex gap-3">
+          <fa-icon
+            [icon]="heart"
+            class="fs-5"
+            (click)="addToFavourite(productData?._id)"
+          ></fa-icon>
+        </div>
+      </div>
+    </div>
+  </div>
+  

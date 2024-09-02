@@ -1,0 +1,189 @@
+<div class="add-product container my-5">
+    <button class="btn btn-warning mb-3" (click)="navigateBack()">Go Back</button>
+    <h1 class="text-center mb-4">Add new Product</h1>
+  
+    <div class="card p-4">
+      <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="productId" class="form-label">Product ID</label>
+            <input
+              formControlName="productId"
+              type="text"
+              class="form-control"
+              [ngClass]="{'is-invalid': isFormSubmitted && productForm.get('productId')?.invalid}"
+            />
+            <div *ngIf="isFormSubmitted && productForm.get('productId')?.invalid" class="invalid-feedback">
+              <ng-container *ngIf="productForm.get('productId')?.hasError('required')">Id is required</ng-container>
+            </div>
+          </div>
+  
+          <div class="col-md-6 mb-3">
+            <label for="productName" class="form-label">Product Name</label>
+            <input
+              formControlName="productName"
+              type="text"
+              class="form-control"
+              [ngClass]="{'is-invalid': isFormSubmitted && productForm.get('productName')?.invalid}"
+            />
+            <div *ngIf="isFormSubmitted && productForm.get('productName')?.invalid" class="invalid-feedback">
+              <ng-container *ngIf="productForm.get('productName')?.hasError('required')">Product Name is required</ng-container>
+            </div>
+          </div>
+  
+          <div class="col-md-6 mb-3">
+            <label for="category" class="form-label">Category</label>
+            <select
+              formControlName="category"
+              class="form-select"
+              [ngClass]="{'is-invalid': isFormSubmitted && productForm.get('category')?.invalid}"
+            >
+              <option value="">Select Category</option>
+              <option value="Dress Watch">Dress Watch</option>
+              <option value="Sports Watch">Sports Watch</option>
+              <option value="Casual Watch">Casual Watch</option>
+              <option value="Smart Watch">Smart Watch</option>
+              <option value="Luxury Watch">Luxury Watch</option>
+            </select>
+            <div *ngIf="isFormSubmitted && productForm.get('category')?.invalid" class="invalid-feedback">
+              <ng-container *ngIf="productForm.get('category')?.hasError('required')">Category is required</ng-container>
+            </div>
+          </div>
+  
+          <div class="col-md-6 mb-3">
+            <label for="brand" class="form-label">Brand</label>
+            <select
+              formControlName="brand"
+              class="form-select"
+              [ngClass]="{'is-invalid': isFormSubmitted && productForm.get('brand')?.invalid}"
+            >
+              <option value="">Select Brand</option>
+              <option value="CASIO">CASIO</option>
+              <option value="DIESEL">DIESEL</option>
+              <option value="FASTRACK">FASTRACK</option>
+              <option value="FIRE-BOLT">FIRE-BOLT</option>
+              <option value="FOSSIL">FOSSIL</option>
+              <option value="GUCCI">GUCCI</option>
+              <option value="RADO">RADO</option>
+              <option value="TIMEX">TIMEX</option>
+              <option value="TISSOT">TISSOT</option>
+              <option value="TITAN">TITAN</option>
+            </select>
+            <div *ngIf="isFormSubmitted && productForm.get('brand')?.invalid" class="invalid-feedback">
+              <ng-container *ngIf="productForm.get('brand')?.hasError('required')">Brand is required</ng-container>
+            </div>
+          </div>
+  
+          <div class="col-md-6 mb-3">
+            <label for="gender" class="form-label">Gender</label>
+            <select
+              formControlName="gender"
+              class="form-select"
+              [ngClass]="{'is-invalid': isFormSubmitted && productForm.get('gender')?.invalid}"
+            >
+              <option value="">Select Gender</option>
+              <option value="Men">Men</option>
+              <option value="Women">Women</option>
+              <option value="Unisex">Unisex</option>
+            </select>
+            <div *ngIf="isFormSubmitted && productForm.get('gender')?.invalid" class="invalid-feedback">
+              <ng-container *ngIf="productForm.get('gender')?.hasError('required')">Gender is required</ng-container>
+            </div>
+          </div>
+  
+          <div class="col-md-6 mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input
+              formControlName="price"
+              type="number"
+              class="form-control"
+              [ngClass]="{'is-invalid': isFormSubmitted && productForm.get('price')?.invalid}"
+            />
+            <div *ngIf="isFormSubmitted && productForm.get('price')?.invalid" class="invalid-feedback">
+              <ng-container *ngIf="productForm.get('price')?.hasError('required')">Price is required</ng-container>
+            </div>
+          </div>
+  
+          <div class="col-md-6 mb-3">
+            <label for="color" class="form-label">Color</label>
+            <input
+              formControlName="color"
+              type="text"
+              class="form-control"
+              [ngClass]="{'is-invalid': isFormSubmitted && productForm.get('color')?.invalid}"
+            />
+            <div *ngIf="isFormSubmitted && productForm.get('color')?.invalid" class="invalid-feedback">
+              <ng-container *ngIf="productForm.get('color')?.hasError('required')">Color is required</ng-container>
+            </div>
+          </div>
+  
+          <div class="col-md-6 mb-3">
+            <label for="weight" class="form-label">Weight (gm)</label>
+            <input
+              formControlName="weight"
+              type="number"
+              class="form-control"
+              [ngClass]="{'is-invalid': isFormSubmitted && productForm.get('weight')?.invalid}"
+            />
+            <div *ngIf="isFormSubmitted && productForm.get('weight')?.invalid" class="invalid-feedback">
+              <ng-container *ngIf="productForm.get('weight')?.hasError('required')">Weight is required</ng-container>
+            </div>
+          </div>
+  
+          <div class="col-md-12 mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea
+              formControlName="description"
+              class="form-control"
+              rows="3"
+              [ngClass]="{'is-invalid': isFormSubmitted && productForm.get('description')?.invalid}"
+            ></textarea>
+            <div *ngIf="isFormSubmitted && productForm.get('description')?.invalid" class="invalid-feedback">
+              <ng-container *ngIf="productForm.get('description')?.hasError('required')">Description is required</ng-container>
+            </div>
+          </div>
+  
+          <div class="col-md-12 mb-3">
+            <label for="specifications" class="form-label">Specifications</label>
+            <textarea
+              formControlName="specifications"
+              class="form-control"
+              rows="3"
+              [ngClass]="{'is-invalid': isFormSubmitted && productForm.get('specifications')?.invalid}"
+            ></textarea>
+            <div *ngIf="isFormSubmitted && productForm.get('specifications')?.invalid" class="invalid-feedback">
+              <ng-container *ngIf="productForm.get('specifications')?.hasError('required')">Specifications are required</ng-container>
+            </div>
+          </div>
+  
+          <div class="col-md-12 mb-3">
+            <label for="material" class="form-label">Material</label>
+            <input
+              formControlName="material"
+              type="text"
+              class="form-control"
+              [ngClass]="{'is-invalid': isFormSubmitted && productForm.get('material')?.invalid}"
+            />
+            <div *ngIf="isFormSubmitted && productForm.get('material')?.invalid" class="invalid-feedback">
+              <ng-container *ngIf="productForm.get('material')?.hasError('required')">Material is required</ng-container>
+            </div>
+          </div>
+  
+          <div class="col-md-12 mb-3">
+            <label for="image" class="form-label">Product Image</label>
+            <input
+              type="file"
+              accept="image/*"
+              class="form-control"
+              (change)="onFileSelected($event)"
+            />
+          </div>
+  
+          <div class="col-12 text-center">
+            <button class="btn btn-success mt-3" type="submit">Add Product</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  

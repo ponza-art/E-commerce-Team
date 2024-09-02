@@ -1,0 +1,104 @@
+.products-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 38px 98px;
+    background-image: url('../../../../assets/images/home-back.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .products-section-title {
+    font-size: 2.2rem;
+    margin: 0 0 38px 0;
+  }
+  
+  .products-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 28px;
+  }
+  
+  .product-card {
+    width: 304px;
+    height: 402px;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 8px;
+    cursor: pointer;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.16);
+  }
+  
+  .product-card h5 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.5;
+    max-height: 3em; 
+    height: auto;
+  }
+  
+  .product-card h5::after {
+    content: '...';
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 3em;
+    line-height: 1.5;
+    visibility: hidden;
+  }
+  
+  /* .product-card:hover img {
+    transform: scale(1.05);
+  } */
+  
+  .product-image {
+    height: 300px;
+    width: fit-content;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .stock-status {
+    top: 10px;
+    left: 10px;
+    font-size: 11px;
+    width: 35%;
+    padding: 1px;
+  }
+  
+  .stock-status.in-stock {
+    background-color: rgb(24, 201, 24);
+  }
+  
+  .stock-status.out-of-stock {
+    background-color: rgb(255, 66, 66);
+  }
+  
+  .product-title {
+    text-wrap: nowrap;
+    text-overflow: ellipsis;
+    cursor: pointer;
+    overflow: hidden;
+  }
+  
+  .product-price {
+    font-size: 1.1rem;
+    color: #e54800;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  
+  .product-rupee-symbol {
+    color: #232323;
+    padding-right: 4px;
+  }
+  

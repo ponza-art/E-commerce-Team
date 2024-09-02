@@ -1,0 +1,34 @@
+.nav-spacing {
+    margin-top: 50px;
+  }
+  
+  .navbar-fixed {
+    position: fixed;
+    z-index: 999;
+    width: 100%;
+    top: 0px;
+  }
+  
+  .navbar-notFixed {
+    position: static;
+    top: -100px;
+  }
+  
+  .navbar-trans {
+    transition: 0.5s ease;
+  }
+  
+  .bg-orange {
+    background-color: #fcb800;
+  }
+  
+  .cart-badge {
+    left: 30px;
+  }
+  
+  .user-image {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+  }
+  
