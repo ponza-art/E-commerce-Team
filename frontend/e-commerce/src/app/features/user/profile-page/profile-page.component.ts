@@ -20,7 +20,7 @@ import { UserValidationService } from '../../../shared/services/validations/user
   standalone: true,
   imports: [FormsModule, ReactiveFormsModule, CommonModule],
   templateUrl: './profile-page.component.html',
-  styleUrl: './profile-page.component.scss',
+  styleUrl: './profile-page.component.css',
 })
 export class ProfilePageComponent implements OnInit {
   userData!: dbUserData;

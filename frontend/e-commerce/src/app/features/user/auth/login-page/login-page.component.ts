@@ -17,7 +17,7 @@ import { AosService } from '../../../../shared/services/aosService/aos.service';
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule, RouterLink, FormsModule],
   templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.scss'],
+  styleUrls: ['./login-page.component.css'],
 })
 export class LoginPageComponent implements OnInit, OnDestroy {
   loginForm!: FormGroup;

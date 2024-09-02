@@ -34,7 +34,7 @@ import { ProductsSectionComponent } from '../../home-page/products-section/produ
     ProductsSectionComponent,
   ],
   templateUrl: './products-page.component.html',
-  styleUrl: './products-page.component.scss',
+  styleUrl: './products-page.component.css',
 })
 export class ProductsPageComponent implements OnInit, OnDestroy {
   @ViewChild('targetDiv') proudcts!: ElementRef;

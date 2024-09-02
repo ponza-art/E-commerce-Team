@@ -5,11 +5,11 @@
   margin: 0;
   border: 0;
   box-sizing: border-box;
-  // font-family: "Noto Serif JP", serif;
+   font-family: "Noto Serif JP", serif;
   font-family: "Poppins", sans-serif;
 }
 
 body.chrome-seconds {
-  // background-color: #f0f0f0;
+   background-color: #f0f0f0;
   min-height: 100dvh;
 }

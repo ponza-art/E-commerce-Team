@@ -18,7 +18,7 @@ import { ProductManagementService } from '../../shared/services/productServices/
     CommonModule,
   ],
   templateUrl: './home-page.component.html',
-  styleUrl: './home-page.component.scss',
+  styleUrl: './home-page.component.css',
 })
 export class HomePageComponent implements OnInit {
   isAdmin: boolean = false;

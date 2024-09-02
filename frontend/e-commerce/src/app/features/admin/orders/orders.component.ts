@@ -10,7 +10,7 @@ import Swal from 'sweetalert2';
   standalone: true,
   imports: [DatePipe,CommonModule],
   templateUrl: './orders.component.html',
-  styleUrl: './orders.component.scss'
+  styleUrl: './orders.component.css'
 })
 export class OrdersComponent implements OnInit {
 

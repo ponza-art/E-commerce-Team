@@ -11,7 +11,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   standalone: true,
   imports: [FontAwesomeModule, ProductsSectionComponent, RouterLink],
   templateUrl: './favourite-page.component.html',
-  styleUrl: './favourite-page.component.scss',
+  styleUrl: './favourite-page.component.css',
 })
 export class FavouritePageComponent {
   favouriteProducts: any;

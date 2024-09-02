@@ -78,6 +78,17 @@ export const routes: Routes = [
         (c) => c.CartPageComponent
       ),
   },
+  {
+    path: 'favourite',
+    title: 'favourite',
+    // guard to check if user is logged in
+    // canActivate: [authGuard],
+    loadComponent: () =>
+      import('./features/user/favourite-page/favourite-page.component').then(
+        (c) => c.FavouritePageComponent
+      ),
+  },
+ 
 
   //   auth routes , login and signup
   {

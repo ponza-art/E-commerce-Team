@@ -17,7 +17,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   standalone: true,
   imports: [ReactiveFormsModule, FormsModule, CommonModule,FontAwesomeModule],
   templateUrl: './contact-page.component.html',
-  styleUrl: './contact-page.component.scss',
+  styleUrl: './contact-page.component.css',
 })
 export class ContactPageComponent implements OnInit {
   contactForm!: FormGroup;

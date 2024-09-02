@@ -7,7 +7,7 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
   standalone: true,
   imports: [FontAwesomeModule],
 templateUrl: './cart-card.component.html',
-  styleUrls: ['./cart-card.component.scss']
+  styleUrls: ['./cart-card.component.css']
 })
 export class CartCardComponent {
   @Input() productitem: any;

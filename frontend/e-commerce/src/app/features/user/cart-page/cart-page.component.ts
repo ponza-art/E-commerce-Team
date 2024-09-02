@@ -12,7 +12,7 @@ import { OrderService } from '../../../shared/services/orderService/order.servic
   standalone: true,
   imports: [NgIf, NgFor, CartCardComponent],
   templateUrl: './cart-page.component.html',
-  styleUrls: ['./cart-page.component.scss'],
+  styleUrls: ['./cart-page.component.css'],
 })
 export class CartPageComponent implements OnInit {
   cartProducts: CartProduct[] = [];

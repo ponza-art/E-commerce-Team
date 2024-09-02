@@ -26,7 +26,7 @@ import { Modal } from 'bootstrap';
     FontAwesomeModule,
   ],
   templateUrl: './admin-panel.component.html',
-  styleUrl: './admin-panel.component.scss',
+  styleUrl: './admin-panel.component.css',
 })
 export class AdminPanelComponent implements OnInit {
   public allProductsDetails: databaseWatchDetails[] = [];

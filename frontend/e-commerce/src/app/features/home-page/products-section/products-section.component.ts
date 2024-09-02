@@ -19,7 +19,7 @@ import { UserManagementService } from '../../../shared/services/userServices/use
   standalone: true,
   imports: [DecimalPipe, CommonModule, RouterLink, FontAwesomeModule],
   templateUrl: './products-section.component.html',
-  styleUrl: './products-section.component.scss',
+  styleUrl: './products-section.component.css',
 })
 export class ProductsSectionComponent implements OnInit {
   featuredProducts: databaseWatchDetails[] = [];

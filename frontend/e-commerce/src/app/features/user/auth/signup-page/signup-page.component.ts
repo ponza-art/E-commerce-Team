@@ -20,7 +20,7 @@ import Swal from 'sweetalert2';
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule, RouterLink, FormsModule],
   templateUrl: './signup-page.component.html',
-  styleUrl: './signup-page.component.scss',
+  styleUrl: './signup-page.component.css',
 })
 export class SignupPageComponent implements OnInit, OnDestroy {
   signupForm!: FormGroup;

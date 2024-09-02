@@ -1,112 +1,324 @@
 <div class="container my-5">
-    <div class="row">
-      <div class="col-12 d-flex justify-content-between mb-3">
-        <div class="d-flex gap-2">
-          <button class="btn btn-custom-warning" routerLink="add-product">
-            Create Product
-          </button>
-          <button class="btn btn-success" routerLink="orders">Orders</button>
-        </div>
-  
-        <div class="d-flex gap-2">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="Search products"
-            [(ngModel)]="searchTerm"
-            (ngModelChange)="filterProducts()"
-          />
+  <div class="row">
+    <div class="col-12 d-flex justify-content-between mb-3">
+      <div class="d-flex gap-2">
+        <button class="btn btn-warning" routerLink="add-product">
+          Create Product
+        </button>
+        <button class="btn btn-success" routerLink="orders">Orders</button>
+      </div>
+
+      <div class="d-flex gap-2">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Search products"
+          [(ngModel)]="searchTerm"
+          (ngModelChange)="filterProducts()"
+        />
+        
+      </div>
+    </div>
+
+    <div *ngIf="filteredProducts.length > 0" class="col-12">
+      <div class="table-responsive">
+        <table class="table table-light table-hover align-middle">
+          <thead class="bg-black">
+            <tr>
+              <th scope="col">Product ID</th>
+              <th scope="col">Product</th>
+              <th scope="col">Category</th>
+              <th scope="col">Weight</th>
+              <th scope="col">Availability</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="
+                let product of filteredProducts
+                  | paginate : { itemsPerPage: pageSize, currentPage: currentP }
+              "
+            >
+              <td class="text-center">{{ product?.productId }}</td>
+              <td>
+                <div class="d-flex align-items-center">
+                  <img
+                    [src]="product.images[0]"
+                    alt="{{ product?.productName }}"
+                    class="product-img me-3"
+                    style="width: 50px; height: auto"
+                  />
+                  <div>
+                    <h6>{{ product?.productName }}</h6>
+                    <p class="mb-0">{{ product?.description }}</p>
+                  </div>
+                </div>
+              </td>
+              <td class="text-center">
+                <span class="badge bg-info text-dark">
+                  {{ product?.category }}
+                </span>
+              </td>
+              <td class="text-center">{{ product?.weight }} gm</td>
+              <td class="text-center">
+                {{ product?.isAvailable ? "Yes" : "No" }}
+              </td>
+              <td class="">
+                <div class="d-flex gap-2">
+                  <button
+                    class="btn btn-sm btn-outline-warning"
+                    title="Edit Product"
+                    *ngIf="product?._id"
+                    (click)="editProduct(product._id)"
+                  >
+                    <fa-icon [icon]="edit"></fa-icon>
+                  </button>
+                  <button
+                    class="btn btn-sm btn-outline-danger"
+                    title="Delete Product"
+                    *ngIf="product?._id"
+                    (click)="deleteProduct(product.productId)"
+                  >
+                    <fa-icon [icon]="trash"></fa-icon>
+                  </button>
+                  <button
+                    class="btn btn-sm btn-outline-success"
+                    title="View Product"
+                    *ngIf="product?._id"
+                    (click)="viewProduct(product._id)"
+                  >
+                    <fa-icon [icon]="view"></fa-icon>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <pagination-controls
+        class="pagination-controls"
+        (pageChange)="currentP = $event"
+      ></pagination-controls>
+    </div>
+
+    <div
+      *ngIf="filteredProducts.length === 0"
+      class="col-12 text-center py-5"
+    >
+      <p class="text-white">No Products to Show</p>
+    </div>
+  </div>
+</div>
+
+  <div
+  class="modal fade"
+  id="viewProductModal"
+  tabindex="-1"
+  aria-labelledby="viewProductModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="viewProductModalLabel">
+          Product Details
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="selectedProduct">
+          <p><strong>Product ID:</strong> {{ selectedProduct.productId }}</p>
+          <p><strong>Product Name:</strong> {{ selectedProduct.productName }}</p>
+          <p><strong>Description:</strong> {{ selectedProduct.description }}</p>
+          <p><strong>Category:</strong> {{ selectedProduct.category }}</p>
+          <p><strong>Brand:</strong> {{ selectedProduct.brand }} </p>
+          <p><strong>Gender:</strong> {{ selectedProduct.gender }} </p>
+          <p><strong>Material:</strong> {{ selectedProduct.material }} </p>
+          <p><strong>Weight:</strong> {{ selectedProduct.weight }} </p>
+          <p><strong>Color:</strong> {{ selectedProduct.color }} </p>
+          <p><strong>Availability:</strong> {{ selectedProduct.isAvailable ? "Yes" : "No" }}</p>
+          <!-- Example of adding more fields -->
+          <p><strong>Price:</strong> {{ selectedProduct.price | currency }}</p>
+          <!-- <p><strong>Manufacturer:</strong> {{ selectedProduct.manufacturer }}</p>
+          <p><strong>Warranty:</strong> {{ selectedProduct.warranty }}</p> -->
+          <p><strong>specifications:</strong>{{ selectedProduct.specifications }}</p>
+
+          <!-- Add more fields as necessary -->
         </div>
       </div>
-  
-      <div *ngIf="filteredProducts.length > 0" class="col-12">
-        <div class="table-responsive">
-          <table class="table table-custom table-custom-hover align-middle">
-            <thead class="bg-black">
-              <tr>
-                <th scope="col">Product ID</th>
-                <th scope="col">Product</th>
-                <th scope="col">Category</th>
-                <th scope="col">Weight</th>
-                <th scope="col">Availability</th>
-                <th scope="col">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr
-                *ngFor="
-                  let product of filteredProducts
-                    | paginate : { itemsPerPage: pageSize, currentPage: currentP }
-                "
-              >
-                <td class="text-center">{{ product?.productId }}</td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <img
-                      [src]="product.images[0]"
-                      alt="{{ product?.productName }}"
-                      class="product-img me-3"
-                      style="width: 50px; height: auto"
-                    />
-                    <div>
-                      <h6>{{ product?.productName }}</h6>
-                      <p class="mb-0">{{ product?.description }}</p>
-                    </div>
-                  </div>
-                </td>
-                <td class="text-center">
-                  <span class="badge bg-info text-dark">
-                    {{ product?.category }}
-                  </span>
-                </td>
-                <td class="text-center">{{ product?.weight }} gm</td>
-                <td class="text-center">
-                  {{ product?.isAvailable ? "Yes" : "No" }}
-                </td>
-                <td class="">
-                  <div class="d-flex gap-2">
-                    <button
-                      class="btn btn-sm btn-outline-custom-warning"
-                      title="Edit Product"
-                      *ngIf="product?._id"
-                      (click)="editProduct(product._id)"
-                    >
-                      <fa-icon [icon]="edit"></fa-icon>
-                    </button>
-                    <button
-                      class="btn btn-sm btn-outline-danger"
-                      title="Delete Product"
-                      *ngIf="product?._id"
-                      (click)="deleteProduct(product.productId)"
-                    >
-                      <fa-icon [icon]="trash"></fa-icon>
-                    </button>
-                    <button
-                      class="btn btn-sm btn-outline-success"
-                      title="View Product"
-                      *ngIf="product?._id"
-                      (click)="viewProduct(product._id)"
-                    >
-                      <fa-icon [icon]="view"></fa-icon>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        <pagination-controls
-          class="pagination-custom-controls"
-          (pageChange)="currentP = $event"
-        ></pagination-controls>
-      </div>
-  
-      <div
-        *ngIf="filteredProducts.length === 0"
-        class="col-12 text-center py-5"
-      >
-        <p class="text-white">No Products to Show</p>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          data-bs-dismiss="modal"
+        >
+          Close
+        </button>
       </div>
     </div>
   </div>
-  
+</div>
+
+
+
+
+  <!-- Edit Product Modal -->
+<div
+  class="modal fade"
+  id="editProductModal"
+  tabindex="-1"
+  aria-labelledby="editProductModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit)="updateProduct()" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label for="productName" class="form-label">Product Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="productName"
+              [(ngModel)]="selectedProduct.productName"
+              name="productName"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea
+              class="form-control"
+              id="description"
+              [(ngModel)]="selectedProduct.description"
+              name="description"
+              required
+            ></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <input
+              type="text"
+              class="form-control"
+              id="category"
+              [(ngModel)]="selectedProduct.category"
+              name="category"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="brand" class="form-label">Brand</label>
+            <input
+              type="text"
+              class="form-control"
+              id="brand"
+              [(ngModel)]="selectedProduct.brand"
+              name="brand"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input
+              type="number"
+              class="form-control"
+              id="price"
+              [(ngModel)]="selectedProduct.price"
+              name="price"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="specifications" class="form-label">Specifications</label>
+            <textarea
+              class="form-control"
+              id="specifications"
+              [(ngModel)]="selectedProduct.specifications"
+              name="specifications"
+            ></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="color" class="form-label">Color</label>
+            <input
+              type="text"
+              class="form-control"
+              id="color"
+              [(ngModel)]="selectedProduct.color"
+              name="color"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="weight" class="form-label">Weight (gm)</label>
+            <input
+              type="text"
+              class="form-control"
+              id="weight"
+              [(ngModel)]="selectedProduct.weight"
+              name="weight"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="material" class="form-label">Material</label>
+            <input
+              type="text"
+              class="form-control"
+              id="material"
+              [(ngModel)]="selectedProduct.material"
+              name="material"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="gender" class="form-label">Gender</label>
+            <input
+              type="text"
+              class="form-control"
+              id="gender"
+              [(ngModel)]="selectedProduct.gender"
+              name="gender"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="isAvailable" class="form-label">Availability</label>
+            <select
+              class="form-control"
+              id="isAvailable"
+              [(ngModel)]="selectedProduct.isAvailable"
+              name="isAvailable"
+            >
+              <option [ngValue]="true">Yes</option>
+              <option [ngValue]="false">No</option>
+            </select>
+          </div>
+          
+
+          <button type="submit" class="btn btn-primary">Save changes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

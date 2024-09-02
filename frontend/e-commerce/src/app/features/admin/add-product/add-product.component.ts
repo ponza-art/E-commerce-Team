@@ -16,7 +16,7 @@ import { ProductManagementService } from '../../../shared/services/productServic
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './add-product.component.html',
-  styleUrl: './add-product.component.scss',
+  styleUrl: './add-product.component.css',
 })
 export class AddProductComponent {
   productForm!: FormGroup;
