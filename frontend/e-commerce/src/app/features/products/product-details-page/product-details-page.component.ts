@@ -55,7 +55,7 @@ export class ProductDetailsPageComponent {
     if (productId) {
       this.productService.getProductById(productId).subscribe(
         (res: any) => {
-          this.productData = res[0];
+          this.productData = res;
           this.selectedImage = this.productData.images[0];
           this.calculateDiscount();
           console.log(this.productData);
