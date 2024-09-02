@@ -20,7 +20,7 @@ import Swal from 'sweetalert2';
   standalone: true,
   imports: [CommonModule, CurrencyPipe, DatePipe, FontAwesomeModule],
   templateUrl: './product-details-page.component.html',
-  styleUrls: ['./product-details-page.component.css'],
+  styleUrls: ['./product-details-page.component.scss'],
 })
 export class ProductDetailsPageComponent {
   productData!: any;

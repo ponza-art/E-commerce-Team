@@ -1,141 +1,140 @@
 <div class="container my-5">
-    <!-- Title and Brand -->
-    <div class="row my-3 align-items-center">
-      <div class="col-md-6">
-        <h3 class="card-title" style="font-style: italic">
-          {{ productData?.productName }}
-        </h3>
+  <!-- Title and Brand -->
+  <div class="row my-3 align-items-center">
+    <div class="col-md-6">
+      <h3 class="card-title" style="font-style: italic">
+        {{ productData?.productName }}
+      </h3>
+    </div>
+  </div>
+
+  <!-- Brand, SKU, and Product Details -->
+  <div class="row mb-4">
+    <div class="col">
+      <span class="card-title text-muted"
+        ><b>Brand:</b> {{ productData?.brand }}</span
+      >
+      <span class="vr mx-3"></span>
+      <span class="card-text text-muted"
+        ><b>SKU:</b> {{ productData?.productId }}</span
+      >
+      <span class="vr mx-3"></span>
+      <span class="card-text text-muted"
+        ><b>Category:</b> {{ productData?.category }}</span
+      >
+    </div>
+  </div>
+
+  <!-- Product Image and Gallery -->
+  <div class="row">
+    <div class="col-md-5">
+      <div class="card-image rounded m-auto bg-light" #cardImage>
+        <img
+          [src]="selectedImage || productData?.images[0]"
+          class="img-fluid h-100 m-auto"
+          alt="Product Image"
+          #zoomImage
+        />
+        <div
+          class="zoomed-image"
+          [ngStyle]="{
+            'background-image':
+              'url(' + (selectedImage || productData?.images[0]) + ')'
+          }"
+        ></div>
+      </div>
+      <div class="image-gallery mt-4 d-flex gap-3">
+        <img
+          *ngFor="let img of productData?.images"
+          [src]="img"
+          [class.selected]="img === selectedImage"
+          (click)="selectImage(img)"
+          style="width: fit-content; margin-left: 5px"
+          height="100"
+          class="rounded"
+        />
       </div>
     </div>
-  
-    <!-- Brand, SKU, and Product Details -->
-    <div class="row mb-4">
-      <div class="col">
-        <span class="card-title text-muted"
-          ><b>Brand:</b> {{ productData?.brand }}</span
-        >
-        <span class="vr mx-3"></span>
-        <span class="card-text text-muted"
-          ><b>SKU:</b> {{ productData?.productId }}</span
-        >
-        <span class="vr mx-3"></span>
-        <span class="card-text text-muted"
-          ><b>Category:</b> {{ productData?.category }}</span
-        >
-      </div>
-    </div>
-  
-    <!-- Product Image and Gallery -->
-    <div class="row">
-      <div class="col-md-5">
-        <div class="card-image rounded m-auto bg-light" #cardImage>
-          <img
-            [src]="selectedImage || productData?.images[0]"
-            class="img-fluid h-100 m-auto"
-            alt="Product Image"
-            #zoomImage
-          />
+
+    <!-- Product Info -->
+    <div class="col-md-7">
+      <div class="card-body">
+        <!-- Pricing Option -->
+        <div class="pricing-option">
+          <span style="font-size: 28px; color: #343033; font-weight: bold">
+            {{ discount | currency : "EGP " }}
+          </span>
+          <span class="vr mx-3"></span>
+          <span class="text-muted"
+            ><del>{{ productData?.price | currency : "EGP " }}</del></span
+          >
+        </div>
+
+        <!-- Availability -->
+        <div class="availability-status">
+          <span *ngIf="productData?.isAvailable" class="text-success"
+            >In Stock</span
+          >
+          <span *ngIf="!productData?.isAvailable" class="text-danger"
+            >Out of Stock</span
+          >
+        </div>
+
+        <!-- Product Specifications -->
+        <hr />
+        <p class="card-text">
+          <b>Specifications:</b> {{ productData?.specifications }}
+        </p>
+        <p class="card-text"><b>Color:</b> {{ productData?.color }}</p>
+        <p class="card-text"><b>Weight:</b> {{ productData?.weight }}</p>
+        <p class="card-text"><b>Material:</b> {{ productData?.material }}</p>
+        <p class="card-text"><b>Gender:</b> {{ productData?.gender }}</p>
+        <hr />
+
+        <!-- Product Description -->
+        <p class="card-text">{{ productData?.description }}</p>
+        <hr />
+
+        <!-- Quantity Selector and Actions -->
+        <div class="d-flex align-items-center justify-content-between">
           <div
-            class="zoomed-image"
-            [ngStyle]="{
-              'background-image':
-                'url(' + (selectedImage || productData?.images[0]) + ')'
-            }"
-          ></div>
-        </div>
-        <div class="image-gallery mt-4 d-flex gap-3">
-          <img
-            *ngFor="let img of productData?.images"
-            [src]="img"
-            [class.selected]="img === selectedImage"
-            (click)="selectImage(img)"
-            style="width: fit-content; margin-left: 5px"
-            height="100"
-            class="rounded"
-          />
-        </div>
-      </div>
-  
-      <!-- Product Info -->
-      <div class="col-md-7">
-        <div class="card-body">
-          <!-- Pricing Option -->
-          <div class="pricing-option">
-            <span style="font-size: 28px; color: #343033; font-weight: bold">
-              {{ discount | currency : "EGP " }}
-            </span>
-            <span class="vr mx-3"></span>
-            <span class="text-muted"
-              ><del>{{ productData?.price | currency : "EGP " }}</del></span
-            >
-          </div>
-  
-          <!-- Availability -->
-          <div class="availability-status">
-            <span *ngIf="productData?.isAvailable" class="text-success"
-              >In Stock</span
-            >
-            <span *ngIf="!productData?.isAvailable" class="text-danger"
-              >Out of Stock</span
-            >
-          </div>
-  
-          <!-- Product Specifications -->
-          <hr />
-          <p class="card-text">
-            <b>Specifications:</b> {{ productData?.specifications }}
-          </p>
-          <p class="card-text"><b>Color:</b> {{ productData?.color }}</p>
-          <p class="card-text"><b>Weight:</b> {{ productData?.weight }}</p>
-          <p class="card-text"><b>Material:</b> {{ productData?.material }}</p>
-          <p class="card-text"><b>Gender:</b> {{ productData?.gender }}</p>
-          <hr />
-  
-          <!-- Product Description -->
-          <p class="card-text">{{ productData?.description }}</p>
-          <hr />
-  
-          <!-- Quantity Selector and Actions -->
-          <div class="d-flex align-items-center justify-content-between">
-            <div
-              class="quantity-selector input-group d-inline-flex align-items-center"
-            >
-              <button (click)="decrementQuantity()" class="btn btn-light">
-                <fa-icon [icon]="minus"></fa-icon>
-              </button>
-              <input
-                type="text"
-                class="form-control text-center"
-                [value]="quantity"
-                readonly
-              />
-              <button (click)="incrementQuantity()" class="btn btn-light">
-                <fa-icon [icon]="plus"></fa-icon>
-              </button>
-            </div>
-            <div (click)="addToFavourite(productData?._id)">
-              <fa-icon
-                class="mx-5"
-                style="cursor: pointer"
-                [icon]="heart"
-              ></fa-icon>
-            </div>
-            @if(productData.isAvailable){
-            <button
-              class="btn btn-warning text-dark fw-bold w-50"
-              (click)="addToCart(productData?._id)"
-            >
-              Add to Cart
+            class="quantity-selector input-group d-inline-flex align-items-center"
+          >
+            <button (click)="decrementQuantity()" class="btn btn-light">
+              <fa-icon [icon]="minus"></fa-icon>
             </button>
-            } @else {
-            <button class="btn btn-warning text-dark fw-bold w-50" disabled>
-              Unavailable
+            <input
+              type="text"
+              class="form-control text-center"
+              [value]="quantity"
+              readonly
+            />
+            <button (click)="incrementQuantity()" class="btn btn-light">
+              <fa-icon [icon]="plus"></fa-icon>
             </button>
-            }
-            <fa-icon class="mx-5 t" [icon]="chart"></fa-icon>
           </div>
+          <div (click)="addToFavourite(productData?._id)">
+            <fa-icon
+              class="mx-5"
+              style="cursor: pointer"
+              [icon]="heart"
+            ></fa-icon>
+          </div>
+          @if(productData.isAvailable){
+          <button
+            class="btn btn-warning text-dark fw-bold w-50"
+            (click)="addToCart(productData?._id)"
+          >
+            Add to Cart
+          </button>
+          } @else {
+          <button class="btn btn-warning text-dark fw-bold w-50" disabled>
+            Unavailable
+          </button>
+          }
+          <fa-icon class="mx-5 t" [icon]="chart"></fa-icon>
         </div>
       </div>
     </div>
   </div>
-  
+</div>
