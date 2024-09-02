@@ -205,3 +205,37 @@ export const updatePassword = async (req, res) => {
       .json({ error: "An error occurred", details: error.message });
   }
 };
+
+
+export const createAdmin = async (req, res) => {
+  const token = req.headers.authorization.split(" ")[1];
+  const decoded = jwt.verify(token, process.env.SECRET_KEY);
+  const userId = decoded.id;
+  const user = await UserModel.findById(userId);
+  if (!user&&user.role==="user") {
+    return res.status(404).json({ message: "cannot create" });
+  }
+  const { fullName, email, password } = req.body;
+
+  try {
+    const existingUser = await UserModel.findOne({ email });
+    if (existingUser) {
+      return res.status(409).json({ error: "User already exists" });
+    }
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const role =requestedUser.email ="admin" ;
+    const newAdmin = new UserModel({
+      fullName,
+      email,
+      password: hashedPassword,
+      role: role
+    });
+
+    const savedAdmin = await newAdmin.save();
+    res.status(201).json(savedAdmin);
+  } catch (error) {
+    console.error("Error creating admin: ", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};

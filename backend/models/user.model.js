@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
+
 const userSchema = new mongoose.Schema(
   {
     fullName: {
@@ -32,12 +33,34 @@ const userSchema = new mongoose.Schema(
     },
     cart: [
       {
-          productId: { type: Schema.Types.ObjectId, ref: 'Product' },
-          quantity: { type: Number, default: 1 }
+        productId: { type: Schema.Types.ObjectId, ref: 'Product' },
+        quantity: { type: Number, default: 1 },
       }
-  ]
+    ],
+    favourite: [
+      {
+        productId: { type: Schema.Types.ObjectId, ref: "Product" },
+      },
+    ],
+    role: {
+      type: String,
+      default: "user", 
+      enum: ["user", "admin"], 
+    },
+
   },
+  {
+    toJSON: {
+      transform(doc, ret) {
+        delete ret.password;
+      },
+    },
+
+  },
+  
   { collection: "users" }
 );
 
 export default mongoose.model("User", userSchema);
+
+

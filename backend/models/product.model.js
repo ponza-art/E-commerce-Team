@@ -4,7 +4,7 @@ const productSchema = new mongoose.Schema(
   {
     productId: {
       type: String,
-      required: true,
+      required: false,
     },
     productName: {
       type: String,
@@ -28,11 +28,11 @@ const productSchema = new mongoose.Schema(
     },
     images: {
       type: [String],
-      required: true,
+      required: false,
     },
     specifications: {
       type: String,
-      required: true,
+      required: false,
     },
     color: {
       type: String,
@@ -44,11 +44,11 @@ const productSchema = new mongoose.Schema(
     },
     material: {
       type: String,
-      required: true,
+      required: false,
     },
     gender: {
       type: String,
-      required: true,
+      required: false,
     },
     isAvailable: {
       type: Boolean,

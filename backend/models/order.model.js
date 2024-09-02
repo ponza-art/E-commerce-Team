@@ -31,7 +31,7 @@ const orderSchema = new mongoose.Schema({
     default: () => new Date(),
   },
   deliveryDate: {
-    type: Date,
+    type: Date, 
     default: calculateDeliveryDate,
   },
   isPaid: {
