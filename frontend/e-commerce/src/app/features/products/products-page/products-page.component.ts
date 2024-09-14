@@ -49,7 +49,6 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
   allColors: any;
   params: ProductParams = {};
   isLogin: boolean = false;
-  // pagination
   pageSize = 9;
   currentP = 1;
 
@@ -65,9 +64,9 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
     private router: Router
   ) {}
 
-  // when select a gender
+  
   selectGender(gender: string) {
-    // console.log(gender);
+    
     this.slectedGender = gender;
     if (gender !== 'Gender') {
       if (gender) {
@@ -78,7 +77,7 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
     }
     this.currentP = 1;
     this.displayProducts();
-    // hide dropdown
+    
     this.toggleGenderDropdown(this.selectedDropdown);
   }
 
@@ -94,7 +93,6 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
     );
   }
 
-  // when select a brand
   selectBrand(brand: string) {
     // console.log(brand);
     this.slectedBrand = brand;
@@ -107,7 +105,6 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
     }
     this.currentP = 1;
     this.displayProducts();
-    // hide dropdown
     this.toggleGenderDropdown(this.selectedDropdown);
   }
 
@@ -123,7 +120,6 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
     );
   }
 
-  // when select a brand
   selectColor(color: string) {
     // console.log(brand);
     this.slectedBrand = color;
@@ -136,7 +132,6 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
     }
     this.currentP = 1;
     this.displayProducts();
-    // hide dropdown
     this.toggleGenderDropdown(this.selectedDropdown);
   }
 
@@ -152,7 +147,7 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
     );
   }
 
-  // when select a category
+  
   selectCategory(category: string) {
     // console.log(category);
     this.slectedCategory = category;
@@ -165,7 +160,7 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
     }
     this.currentP = 1;
     this.displayProducts();
-    // hide dropdown
+    
     this.toggleGenderDropdown(this.selectedDropdown);
   }
 
@@ -182,7 +177,7 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
     );
   }
 
-  // method to display products
+  
   displayProducts() {
     // console.log(this.params); //
     this._productManagement.getAllProducts(this.params).subscribe(
@@ -201,12 +196,12 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
     });
   }
 
-  // when add cart button clicked
+  
   addCart(productId: string): void {
     if (this.isLogin) {
       this._cartService.addCart(productId).subscribe(
         (res) => {
-          // check if respose coming or true
+          
           if (res) {
             Swal.fire({
               toast: true,
@@ -229,7 +224,7 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
     }
   }
 
-  // to toggle gender dropdown
+  
   toggleGenderDropdown(dropdown: string) {
     if (this.selectedDropdown && this.selectedDropdown !== dropdown) {
       const currentOpenDropdown = document.querySelector(this.selectedDropdown);
@@ -240,7 +235,7 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
     selectItems?.classList.toggle('select-hide');
   }
 
-  // to close dropdown
+
   hideDropDown() {
     const selectItems = document.querySelectorAll('.select-items');
     selectItems.forEach((item) => item.classList.add('select-hide'));
@@ -257,8 +252,6 @@ export class ProductsPageComponent implements OnInit, OnDestroy {
       this.isLogin = loggedIn;
     });
   }
-
-  // when click anywhere on screen
   @HostListener('document:click', ['$event'])
   onClick(event: MouseEvent) {
     const clickedElement = event.target as HTMLElement;

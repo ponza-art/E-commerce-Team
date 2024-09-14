@@ -1,5 +1,5 @@
 <div class="container-md container-lg container-xl">
-  <!-- Check if cart is empty -->
+  
   @if (cartProducts.length == 0) {
     <div class="d-flex flex-column justify-content-center align-items-center w-100 h-75 mb-5">
       <div class="d-flex justify-content-center align-items-center p-5">
@@ -9,9 +9,8 @@
     </div>
   } @else {
     <div class="row my-3 p-5">
-      <!-- Cart items display -->
+      
       <div class="col-12 col-md-8 col-lg-8 col-xl-8 px-1 pe-lg-2">
-        <!-- Product header -->
         <div class="row d-none d-md-flex border-bottom p-2 bg-light mt-3 rounded fw-bold w-100">
           <div class="col-md-2 col-lg-2 col-xl-2 text-lg-center"></div>
           <div class="col-md-3 col-lg-3 col-xl-3">
@@ -31,7 +30,6 @@
           </div>
         </div>
 
-        <!-- Cart products displayed using app-cart-card component -->
         @for (product of cartProducts; track $index) {
           <app-cart-card
             [productitem]="product"
@@ -42,7 +40,6 @@
         }
       </div>
 
-      <!-- Checkout Summary -->
       <div class="col-12 col-md-4 col-lg-4 col-xl-4 mb-3 py-3">
         <div class="px-2 bg-light border-1 border w-100">
           <div class="d-flex justify-content-between p-3 py-4 border-bottom">
@@ -63,7 +60,6 @@
       </div>
     </div>
 
-    <!-- Action buttons -->
     <div class="row mt-4 d-flex justify-content-center justify-content-md-between w-100 py-2 ms-sm-2 ms-md-0">
       <button class="btn btn-warning h3 p-3 fw-bold col-12 col-md-4 col-lg-3 col-xl-2" routerLink="/products" routerLinkActive="active-link">
         <i class="bi bi-arrow-left m-1"></i> Back to shop

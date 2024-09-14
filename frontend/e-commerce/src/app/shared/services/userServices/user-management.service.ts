@@ -38,7 +38,6 @@ export class UserManagementService {
 
 
 
-  //-------- HTTP requests -------- 
 
   createUser(newUser: UserDetails): Observable<any> {
     return this._http
@@ -57,7 +56,7 @@ export class UserManagementService {
         const authDataString = JSON.stringify(authData);
         localStorage.setItem('authData', authDataString);
         this.currentUserImageSubject.next(userImage);
-        this.syncLocalCartWithServer(); // Sync cart after login
+        this.syncLocalCartWithServer(); 
       })
     );
   }
@@ -71,7 +70,7 @@ export class UserManagementService {
           quantity: item.quantity,
         }).subscribe({
           next: () => {
-            localStorage.removeItem('localCart'); // Clear local cart after syncing
+            localStorage.removeItem('localCart'); 
           },
           error: (err) => console.error('Error syncing local cart:', err),
         });
@@ -84,7 +83,7 @@ export class UserManagementService {
       .get(`${this.apiUrl}/profile`)
   }
 
-  // http reqest to store the user image string
+  
   updateUserImage(imageString: string | null): Observable<any> {
     return this._http
       .post(
@@ -93,21 +92,16 @@ export class UserManagementService {
       )
   }
 
-  // http reqest to update user details
   updateUserDetails(userData: updatedUser): Observable<any> {
     return this._http
       .patch(`${this.apiUrl}`, userData,)
   }
 
-  // http reqest to update user password
   updateUserPassword(passwords: passwordUpdation): Observable<any> {
     return this._http
       .patch(`${this.apiUrl}/password`, passwords)
   }
 
-  // ------------other functions------------
-
-  // get Auth data from localStorage 
   getAuthData() {
     const authDataString = localStorage.getItem('authData');
     if (authDataString) {
@@ -122,7 +116,6 @@ export class UserManagementService {
     return null;
   }
 
-  // to get user image
   private getStoredImage(): string {
     if (typeof window !== 'undefined') {
       const authData = this.getAuthData();
@@ -133,7 +126,6 @@ export class UserManagementService {
     return AppConfig.defaultUserUrl;
   }
 
-  // to check if user is login 
   get isLoggedIn(): Observable<boolean> {
     const authData = this.getAuthData()
     if (authData) {

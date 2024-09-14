@@ -55,17 +55,16 @@ export class ProfilePageComponent implements OnInit {
     });
   }
 
-  // to save and show the profile image
   onFileSelected(event: any) {
     const file: File = event.target.files[0];
     const reader = new FileReader();
     reader.onload = (e: any) => {
       this.userprofileImage = e.target.result;
-      // send http post reqest to save the image string to db
+      
       this._userManagement.updateUserImage(this.userprofileImage).subscribe(
         (res) => {
           console.log(res);
-          // pay load too large error is getting  -------------------------------------fix it now
+          
         },
         (err) => {
           console.error(err);
@@ -78,12 +77,12 @@ export class ProfilePageComponent implements OnInit {
     this.fileInput.nativeElement.click();
   }
 
-  // when user clicked on submit button to save updates
+  
   onSubmit() {
     if (this.isUpdating) {
       if (this.profileForm.valid) {
         console.log(this.profileForm.value);
-        // http post to save the updated data to db
+        
         this.updatedUser = this.profileForm.value
         this._userManagement.updateUserDetails(this.updatedUser).subscribe(
           (res) => {
@@ -101,7 +100,7 @@ export class ProfilePageComponent implements OnInit {
           }
         )
         this.isUpdating = false
-        //bring the change into the profile card data also     reload if needed
+        
       } else {
         alert('Enter all details save');
       }
@@ -110,12 +109,11 @@ export class ProfilePageComponent implements OnInit {
     }
   }
 
-  // to show chage password form
+  
   changePassword(){
-    // display input fealds to enter current password and new password
+    
     this.showPasswordInputs = true
   }
-  // to close the changePassword form 
   closePasswordForm(){
     this.showPasswordInputs = false
     this.updatePasswordForm.reset();
@@ -148,7 +146,6 @@ export class ProfilePageComponent implements OnInit {
     }
   }
 
-  // confirm password validation 
   confirmPasswordValidator(control: AbstractControl): ValidationErrors | null {
     const password = control.root.get('newPassword');
     return password && control.value !== password.value
@@ -156,7 +153,6 @@ export class ProfilePageComponent implements OnInit {
       : null;
   }
 
-  // logout button clicked 
   logout(){
     this._userManagement.logoutUser();
     this._router.navigate(['']);
@@ -164,7 +160,6 @@ export class ProfilePageComponent implements OnInit {
 
   ngOnInit() {
     window.scrollTo(0, 0);
-    // inint the reactive form with empty values for user data updation
     this.profileForm = this._fb.group({
       fullName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -183,14 +178,12 @@ export class ProfilePageComponent implements OnInit {
       ],
     });
 
-    // init form to update user password  
     this.updatePasswordForm =this._fb.group({
       currentPassword: ['', [Validators.required]],
       newPassword : ['' , [this._userValidation.passwordValidator]],
       confirmPassword: ['', [this.confirmPasswordValidator]]
     })
 
-    // get user data from backend and store in the userData variable
     this._userManagement.getUserDetails().subscribe(
       (res) => {
         this.userData = res;

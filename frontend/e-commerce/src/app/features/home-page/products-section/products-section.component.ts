@@ -33,7 +33,6 @@ export class ProductsSectionComponent implements OnInit {
   constructor(
     public _productManagement: ProductManagementService,
     private router: Router,
-    // private cartService: CartService,
     private favouriteService: FavouriteService,
     private userService: UserManagementService
   ) {}
@@ -53,7 +52,6 @@ export class ProductsSectionComponent implements OnInit {
 
   addToFavourite(productId: string): void {
     if (this.isLogin) {
-      // If user is logged in, add to server-side cart
       this.favouriteService.addFavourite(productId).subscribe(
         (res: any) => {
           if (res) {

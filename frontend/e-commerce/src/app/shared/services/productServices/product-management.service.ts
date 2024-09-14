@@ -15,12 +15,12 @@ export class ProductManagementService {
 
   constructor(private _http: HttpClient) {}
 
-  // create products
+  
   createProduct(productData: WatchDetails) {
     return this._http.post(`${this.apiUrl}`, productData);
   }
 
-  // get all products / get all products based on filter
+  
   getAllProducts(
     paramsObj?: ProductParams
   ): Observable<databaseWatchDetails[]> {
@@ -49,20 +49,16 @@ export class ProductManagementService {
   }
 
   priceFilter(min: number, max: number) {
-    // let params = new HttpParams()
-    //   .set('minPrice', min.toString())
-    //   .set('maxPrice', max.toString());
+
     return this._http.get<any[]>(this.apiUrl + `/pricefilter/${min}&${max}`);
   }
 
-  // get eight products
   getSomeProducts(): Observable<databaseWatchDetails[]> {
     return this._http.get<databaseWatchDetails[]>(
       `${this.apiUrl}/product/eight`
     );
   }
 
-  // get product by id
   getProductById(productId: string): Observable<databaseWatchDetails> {
     console.log(this._http.get<databaseWatchDetails>(`${this.apiUrl}/${productId}`));
     
@@ -70,13 +66,11 @@ export class ProductManagementService {
     
   }
 
-  // update Availability
 
   updateProduct(productData: any): Observable<databaseWatchDetails> {
     return this._http.put<databaseWatchDetails>(`${this.apiUrl}/${productData.productId}`, productData);
   }
 
-  // delete a product
   deleteOneProduct(productId: string): Observable<databaseWatchDetails> {
     return this._http.delete<databaseWatchDetails>(
       `${this.apiUrl}/${productId}`

@@ -68,7 +68,6 @@ export class SignupPageComponent implements OnInit, OnDestroy {
       const { fullName, email, password } = this.signupForm.value;
       this.userData = { fullName, email, password };
 
-      // sending the data to the server
       this._userManagement.createUser(this.userData).subscribe(
         (res) => {
           console.log(res);
@@ -95,7 +94,6 @@ export class SignupPageComponent implements OnInit, OnDestroy {
         }
       );
       
-      // reseting the form
       this.formSubmitted = false;
       this.signupForm.reset();
     } else {

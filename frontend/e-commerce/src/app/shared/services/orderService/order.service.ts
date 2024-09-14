@@ -13,13 +13,13 @@ export class OrderService {
   constructor(
     private _http: HttpClient, private _userService: UserManagementService  ) {}
 
-  // create order and payment request
+  
   createOrder(amount: number, order: any[]): Observable<any> {
     const orderData = { amount, order };
     return this._http.post(`${this.apiUrl}/create-order`, orderData);
   }
 
-  // get all paid orders 
+   
   getAllOrders(): Observable<any>{
     return this._http
     .get(`${this.apiUrl}`)

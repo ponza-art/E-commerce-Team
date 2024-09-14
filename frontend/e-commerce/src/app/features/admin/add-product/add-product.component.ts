@@ -30,7 +30,6 @@ export class AddProductComponent {
   ) {}
 
   ngOnInit(): void {
-    // Initialize form
     this.productForm = this.fb.group({
       productId: ['', Validators.required],
       productName: ['', Validators.required],
@@ -38,7 +37,7 @@ export class AddProductComponent {
       category: ['', Validators.required],
       brand: ['', Validators.required],
       price: ['', [Validators.required]],
-      images: this.fb.array([], [Validators.required]),  // Removed minArrayLength validator
+      images: this.fb.array([], [Validators.required]),  
       specifications: ['', Validators.required],
       color: ['', Validators.required],
       weight: ['', Validators.required],
@@ -47,33 +46,33 @@ export class AddProductComponent {
     });
   }
 
-  // to get the image array from form
+  
   get imagesFormArray(): FormArray {
     return this.productForm.get('images') as FormArray;
   }
 
-  // clear image forms array
+  
   clearImagesFormArray() {
     while (this.imagesFormArray.length) {
       this.imagesFormArray.removeAt(0);
     }
   }
 
-  // to add image to image array on form
+  
   addImage(image: string): void {
     this.imagesFormArray.push(this.fb.control(image, Validators.required));
   }
 
-  // convert image to base64Image
+  
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       const file = input.files[0];
       const reader = new FileReader();
       reader.onload = () => {
-        this.addImage(reader.result as string); // Add image to form array
+        this.addImage(reader.result as string); 
 
-        // Display SweetAlert notification after image upload
+        
         Swal.fire({
           text: 'Image uploaded successfully!',
           icon: 'success',
@@ -88,7 +87,7 @@ export class AddProductComponent {
     }
   }
 
-  // on submitting the form
+  
   onSubmit() {
     console.log(this.productForm);
     
@@ -97,7 +96,7 @@ export class AddProductComponent {
       console.log(this.productForm.value);
       const productData = this.productForm.value;
       console.log('valid product', productData);
-      // Add submission logic here
+      
       this._productManagement.createProduct(productData).subscribe(
         (res) => {
           Swal.fire({
@@ -111,7 +110,7 @@ export class AddProductComponent {
 
           this.isFormSubmitted = false;
 
-          // Clear the images form array
+          
           this.clearImagesFormArray();
           this.productForm.reset();
         },
@@ -122,7 +121,7 @@ export class AddProductComponent {
     }
   }
 
-  // to navigate back
+  
   navigateBack() {
     this.location.back();
   }

@@ -85,7 +85,7 @@ export class CartPageComponent implements OnInit {
         console.log(response);
         
         
-        // Clear the cart after successful order placement
+        
         this._cartService.clearCart(response.orderId).subscribe(
           () => {
             this.router.navigate(['/order-confirmation']);

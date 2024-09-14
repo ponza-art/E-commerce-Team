@@ -14,7 +14,6 @@ import Swal from 'sweetalert2';
 })
 export class OrdersComponent implements OnInit {
 
-  // make interface for this 
   orders!: dbOrder[]
   showOrder: boolean = false
   currentOrder!: any
@@ -35,7 +34,6 @@ export class OrdersComponent implements OnInit {
     )
   }
 
-  // open orders list
   openOrder(order: any){
     this.showOrder = true
     this.currentOrder = order
@@ -55,16 +53,13 @@ export class OrdersComponent implements OnInit {
     });
   }
 
-  // close orders list
   closeOrder() {
     this.currentOrder.forEach((orderItem: any) => {
-        // Restore the original productId
         orderItem.productId = orderItem.productId._id;
     });
     this.showOrder = false;
   }
 
-  // delete an order
   deleteOrder(id: string){
     Swal.fire({
       title: 'Are you sure?',
@@ -77,8 +72,8 @@ export class OrdersComponent implements OnInit {
       if (result.isConfirmed) {
         this._orderService.deleteOrderById(id).subscribe(
           (res)=> {
-            console.log('Order deleted:', res); // Log success response
-            this.getAllOrders(); // Refresh orders list
+            console.log('Order deleted:', res); 
+            this.getAllOrders(); 
             Swal.fire({
               title: 'Deleted!',
               text: 'Order has been deleted.',
@@ -87,7 +82,7 @@ export class OrdersComponent implements OnInit {
             });
           }, 
           (err) => {
-            console.error('Error deleting order:', err); // Log error response
+            console.error('Error deleting order:', err); 
             Swal.fire({
               title: 'Error!',
               text: 'There was a problem deleting the order. Please try again later.',

@@ -67,7 +67,6 @@ export class ProductDetailsPageComponent {
     }
   }
   ngAfterViewInit() {
-    // Ensure the DOM is ready before adding event listeners
     this.setupEventListeners();
   }
   private setupEventListeners() {
@@ -113,7 +112,6 @@ export class ProductDetailsPageComponent {
 
   addToCart(productId: string): void {
     if (this.isLogin) {
-      // If user is logged in, add to server-side cart
       this.cartService.addCart(productId, this.quantity).subscribe(
         (res: any) => {
           if (res) {
@@ -125,14 +123,12 @@ export class ProductDetailsPageComponent {
         }
       );
     } else {
-      // If not logged in, add to local storage
       this.addProductToLocalCart(productId);
       Swal.fire(
         'Dear User',
         'Product added to cart. Please log in to sync your cart.',
         'info'
       );
-      // alert('Product added to cart. Please log in to sync your cart.');
     }
   }
 
@@ -170,14 +166,14 @@ export class ProductDetailsPageComponent {
     this.userService.isLoggedIn.subscribe((loggedIn: boolean) => {
       this.isLogin = loggedIn;
       if (this.isLogin) {
-        this.syncLocalCartToServer(); // Sync local cart if user logs in
+        this.syncLocalCartToServer(); 
       }
     });
   }
 
   addToFavourite(productId: string): void {
     if (this.isLogin) {
-      // If user is logged in, add to server-side cart
+      
       this.favouriteService.addFavourite(productId).subscribe(
         (res: any) => {
           if (res) {
@@ -190,7 +186,7 @@ export class ProductDetailsPageComponent {
       );
     } else {
       Swal.fire('Dear User', 'You should login to have favourite list', 'info');
-      // alert('You Must Login First');
+      
     }
   }
 }

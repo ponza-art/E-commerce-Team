@@ -4,9 +4,7 @@
       class="profile-container__wrapper"
       [ngClass]="{ 'blur-div': showPasswordInputs }" data-aos="zoom-in-up"
     >
-      <!-- profile left section  -->
       <div class="profile-container__profile-left-section">
-        <!-- user image div start -->
         <div class="profile-container__user-image" (click)="fileInput.click()">
           @if (userprofileImage) {
           <img
@@ -25,7 +23,6 @@
             style="display: none"
           />
         </div>
-        <!-- user image div end -->
   
         <div class="profile-container__user-name-card">
           <h1>{{ profileForm.get("fullName")?.value }}</h1>
@@ -46,7 +43,6 @@
         </div>
       </div>
   
-      <!-- profile right section  -->
       <div class="profile-container__profile-details-right-section">
         <h1>Account Details</h1>
   
@@ -147,7 +143,6 @@
             </button>
           </div>
         </form>
-        <!-- when update password clicked  -->
   
   
   

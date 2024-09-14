@@ -13,7 +13,7 @@ export interface WatchDetails {
     material: string;
     gender: string;
     quantity?: number; 
-    stock?: number; // Optional, if you need to track stock availability
+    stock?: number; 
     __v?: number;
   }
   

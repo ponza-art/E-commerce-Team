@@ -16,7 +16,7 @@ export class CartService {
     private _userService: UserManagementService,
     private router: Router
   ) {
-    // Initialize the cart item count on service creation
+    
     this.updateCartItemCount();
   }
 
@@ -25,7 +25,7 @@ export class CartService {
       productId: productId,
       quantity: quantity,
     }).pipe(
-      tap(() => this.updateCartItemCount())  // Update the count after adding
+      tap(() => this.updateCartItemCount())  
     );
   }
 
@@ -34,7 +34,7 @@ export class CartService {
       productId: productId,
       quantity: 1,
     }).pipe(
-      tap(() => this.updateCartItemCount())  // Update the count after decreasing
+      tap(() => this.updateCartItemCount())  
     );
   }
 
@@ -60,12 +60,12 @@ export class CartService {
     console.log(params);
     return this._http.delete(`${this.apiUrl}/cart`, { params })
     
-      .pipe(tap(() => this.updateCartItemCount()));  // Update the count after removing
+      .pipe(tap(() => this.updateCartItemCount()));  
   }
 
   clearCart(dbOrderId: string): Observable<any> {
     const params = new HttpParams().set('dbOrderId', dbOrderId);
     return this._http.delete(`${this.apiUrl}/clear-cart`, { params })
-      .pipe(tap(() => this.updateCartItemCount()));  // Update the count after clearing
+      .pipe(tap(() => this.updateCartItemCount()));  
   }
 }

@@ -61,7 +61,6 @@ export class HomePageComponent implements OnInit {
     );
   }
 
-  // navigate to admin page
   navigateAdmin() {
     this._router.navigateByUrl('admin');
   }

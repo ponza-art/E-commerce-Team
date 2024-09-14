@@ -41,14 +41,7 @@ export const routes: Routes = [
 
 
   // contact page
-  {
-    path: 'contact',
-    title: 'Contact',
-    loadComponent: () =>
-      import('./features/contact-page/contact-page.component').then(
-        (c) => c.ContactPageComponent
-      ),
-  },
+  
 
   // loged in user routes with auth guard
   {

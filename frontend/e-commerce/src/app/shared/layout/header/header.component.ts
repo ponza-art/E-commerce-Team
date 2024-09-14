@@ -42,7 +42,6 @@ export class HeaderComponent implements OnInit {
       return this.userImage
     });
 
-    // Subscribing to cart item count updates
     this.cartService.getCartItemCount().subscribe((count) => {
       this.cartItemCount = count;
     });

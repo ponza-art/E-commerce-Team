@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class FavouriteService {
-  private apiUrl = 'users'; // Assuming this is the base URL
+  private apiUrl = 'users'; 
 
   constructor(private _http: HttpClient) {}
 
