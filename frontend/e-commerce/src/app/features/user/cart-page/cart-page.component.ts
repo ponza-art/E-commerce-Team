@@ -2,15 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../../shared/services/cartServices/cart.service';
 import { CartProduct } from '../../../core/models/watch-details';
 import { NgFor, NgIf } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
 import { CartCardComponent } from '../cart-card/cart-card.component';
 import { OrderService } from '../../../shared/services/orderService/order.service';
+import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
+
 
 @Component({
   selector: 'app-cart-page',
   standalone: true,
-  imports: [NgIf, NgFor, CartCardComponent],
+  imports: [NgIf, NgFor, CartCardComponent,NgxSkeletonLoaderModule,RouterLink],
   templateUrl: './cart-page.component.html',
   styleUrls: ['./cart-page.component.css'],
 })

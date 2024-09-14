@@ -31,7 +31,7 @@
       [src]="productData?.images[0]"
       style="height: 300px; width: fit-content; cursor: pointer"
       class="card-img-top img-fluid border-0"
-      [routerLink]="'watch/' + productData._id"
+      [routerLink]="'/products/watch/' + productData._id"
       [alt]="productData?.images[0]"
     />
   </div>
@@ -44,7 +44,7 @@
         cursor: pointer;
         overflow: hidden;
       "
-      [routerLink]="'watch/' + productData._id"
+      [routerLink]="'/products/watch/' + productData._id"
     >
       {{ productData?.productName }}
     </h5>

@@ -12,6 +12,7 @@ templateUrl: './cart-card.component.html',
 export class CartCardComponent {
   @Input() productitem: any;
   trash = faTrash;
+  // total: number =  Maath.floor(productitem?.productId.price *productitem?.quantity);
   @Output() increaseQuantity = new EventEmitter<any>();
   @Output() decreaseQuantity = new EventEmitter<any>();
   @Output() removeItem = new EventEmitter<any>();

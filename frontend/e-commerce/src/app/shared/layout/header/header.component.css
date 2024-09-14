@@ -1,32 +1,37 @@
+.navbar-fixed {
+  position: sticky;
+  z-index: 999;
+  width: 100%;
+  top: 0px;
+}
 
-  
-  .navbar-fixed {
-    position: fixed;
-    z-index: 999;
-    width: 100%;
-    top: 0px;
-  }
-  
-  .navbar-notFixed {
-    position: static;
-    top: -100px;
-  }
-  
-  .navbar-trans {
-    transition: 0.5s ease;
-  }
-  
-  .bg-orange {
-    background-color: #fcb800;
-  }
-  
-  .cart-badge {
-    left: 30px;
-  }
-  
-  .user-image {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-  }
-  
+.navbar-notFixed {
+  position: static;
+  top: -100px;
+}
+
+.navbar-trans {
+  transition: 0.5s ease;
+}
+
+.bg-orange {
+  background-color: #fcb800;
+}
+
+.cart-badge {
+  left: 30px;
+}
+
+.user-image {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-width='2' linecap='round' linejoin='round' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+.navbar-collapse {
+  flex-grow: unset;
+}

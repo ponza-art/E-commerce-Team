@@ -4,46 +4,29 @@
   (window:scroll)="onScroll()"
   [ngClass]="navBarFixed ? 'navbar-fixed' : 'navbar-notFixed'"
 >
-  <div class="container justify-content-center px-4 px-sm-0">
-    <div class="row w-100 justify-content-between">
-      <a
-        class="col-6 col-sm-4 col-md-4 col-lg-2 navbar-brand fw-bolder fs-4 text-center d-flex align-items-center justify-content-center justify-content-lg-start"
-        routerLink="/"
-      >
-        Watch <span class="text-white">&</span> Wear
-      </a>
-      <!--
-      <div
-        class="col-1 col-sm-3 col-md-4 col-lg-6 align-items-center d-none d-lg-flex"
-      >
-        <form class="input-group" role="search">
-          <button
-            class="btn btn-outline-secondary dropdown-toggle rounded-end-0 border-0 bg-white text-black"
-            type="button"
-            data-bs-toggle="dropdown"
-          >
-            All
-          </button>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">All</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-          <input
-            class="form-control border-0 rounded-0"
-            type="search"
-            placeholder="I'm shopping for..."
-          />
-          <button
-            class="text-white px-3 py-2 btn bg-dark border-0 rounded-start-0"
-            type="submit"
-          >
-            Search
-          </button>
-        </form>
-      </div>
-      -->
-      <ul class="col-5 col-sm-4 col-md-4 col-lg-3 navbar-nav mx-3 flex-row justify-content-lg-end justify-content-center gap-4 p-0">
+  <div class="container px-4 px-sm-0">
+    <a
+      class="navbar-brand fw-bolder fs-4 text-center d-flex align-items-center justify-content-center justify-content-lg-start"
+      routerLink="/"
+    >
+      Watch <span class="text-white">&</span> Wear
+    </a>
+
+    <!-- Toggler for mobile view -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarResponsive"
+      aria-controls="navbarResponsive"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ms-auto gap-3 p-0">
         <li class="nav-item d-flex align-items-center">
           <a class="nav-link fw-bold fs-5" routerLink="products">
             Products
@@ -70,10 +53,14 @@
             </span>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link d-flex align-items-center my-2 gap-2" routerLink="user">
+        <li class="nav-item d-flex align-items-center my-2 gap-2">
+          <a class="nav-link" routerLink="user">
             <ng-container *ngIf="(_usermanagement.isLoggedIn | async); else showProfileIcon">
-              <img [src]="_usermanagement.currentUserImage | async" alt="User Image" class="user-image">
+              <img
+                [src]="_usermanagement.currentUserImage | async"
+                alt="User Image"
+                class="user-image"
+              />
             </ng-container>
             <ng-template #showProfileIcon>
               <fa-icon class="fa-2x" [icon]="profile"></fa-icon>

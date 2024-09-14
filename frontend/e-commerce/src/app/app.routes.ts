@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth.guard';
-import { adminGuard } from './core/guards/admin.guard'; 
+import { adminGuard } from './core/guards/admin.guard';
+import { PageErrorComponent } from './page-error/page-error.component';
 
 export const routes: Routes = [
   // home or landing page
@@ -37,7 +38,7 @@ export const routes: Routes = [
     ],
   },
 
- 
+
 
   // contact page
   {
@@ -88,7 +89,7 @@ export const routes: Routes = [
         (c) => c.FavouritePageComponent
       ),
   },
- 
+
 
   //   auth routes , login and signup
   {
@@ -133,7 +134,7 @@ export const routes: Routes = [
             (c) => c.AddProductComponent
           ),
       },
-      
+
 
       {
         path: 'orders',
@@ -146,5 +147,5 @@ export const routes: Routes = [
     ],
   },
 
-  { path: '**', redirectTo: '' },
+{ path: '**',title:"404",component:PageErrorComponent },
 ];

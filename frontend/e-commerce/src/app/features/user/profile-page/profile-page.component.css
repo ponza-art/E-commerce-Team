@@ -156,21 +156,11 @@
   border: 1px solid;
   border-radius: 18px;
   color: #fff;
+  background-color: #000;
   transition: background-color 0.3s, color 0.3s, transform 0.1s;
 }
 
-.password-change-btn {
-  background: #fff;
-  border-color: #000;
-}
 
-.password-change-btn:hover {
-  background: #000;
-}
-
-.password-change-btn:active {
-  transform: scale(0.95);
-}
 
 .update-details-btn {
   background: #000;
@@ -242,13 +232,11 @@
   transition: background-color 0.3s, color 0.3s, transform 0.1s;
 }
 
-.cancel-btn {
-  background: #000;
-  border-color: #000;
-}
+
 
 .cancel-btn:hover {
   background: #333;
+  color: #fff;
 }
 
 .cancel-btn:active {

@@ -26,13 +26,13 @@
         </div>
         <div class="d-md-none col-sm-12 d-flex align-items-center justify-content-md-center py-md-0">
           <span class="text-secondary d-md-none">Total:</span>
-          <span>{{ productitem.productId.price * productitem.quantity }}$</span>
+          <span>{{ (productitem.productId.price * productitem.quantity).toFixed(2) }}$</span>
         </div>
       </div>
     </div>
     <div class="col-md-2 col-lg-2 col-xl-2 d-flex align-items-center justify-content-md-center d-none d-md-flex ps-xl-4 py-md-0">
       <span class="text-secondary d-md-none">Price:</span>
-      <span>{{ productitem.productId.price }}$</span>
+      <span>{{ (productitem.productId.price).toFixed(2) }}$</span>
     </div>
     <div class="col-sm-12 col-md-2 col-lg-2 col-xl-2 d-flex align-items-center px-md-1 px-lg-1 px-xl-1 justify-content-center d-none d-md-flex">
       <div class="border border-2 p-1 d-flex justify-content-sm-between justify-content-center col-md-12 col-lg-9 my-md-0 col-sm-9">
@@ -47,10 +47,10 @@
     </div>
     <div class="col-md-2 col-lg-2 col-xl-2 d-flex align-items-center justify-content-md-center py-md-0 d-none d-md-flex">
       <span class="text-secondary d-md-none">Total:</span>
-      <span>{{ productitem.productId.price * productitem.quantity }}</span>
+      <span>{{ ( productitem.productId.price * productitem.quantity).toFixed(2) }}</span>
     </div>
     <div class="d-none d-md-flex col-md-1 col-lg-1 col-xl-1 d-flex align-items-md-center justify-content-md-center">
-      <button class="w-100 text-danger " (click)="removeItems(productitem)">
+      <button class=" text-danger " (click)="removeItems(productitem)">
         <fa-icon [icon]="trash"></fa-icon>
       </button>
     </div>

@@ -1,17 +1,16 @@
 <div class="container-md container-lg container-xl">
-    <div class="d-flex justify-content-center align-items-center p-5">
-      <h1 class="text-center my-3 fw-bold">Favourites</h1>
-    </div>
+  
     <div class="container">
       <!-- Check if cart is empty -->
       @if (favouriteProducts?.length == 0) {
-      <div
-        class="d-flex justify-content-center align-items-center w-100 h-75 mb-5"
-      >
-        <h2>The Favourite is Empty</h2>
-      </div>
+        <div class="d-flex flex-column justify-content-center align-items-center w-100 h-75 mb-5">
+          <div class="d-flex justify-content-center align-items-center p-5">
+            <h1 class="text-center my-3 fw-bold">Favourites</h1>
+          </div>
+          <img src="../../../../assets/empty-cart.png" alt="">
+        </div>
       } @else {
-      <div class="row mb-5">
+      <div class="row my-5 ">
         @for (product of favouriteProducts; track $index) {
         <div
           class="card h-100 border-0 bg-transparent col-lg-3 col-md-4 col-sm-6 col-12"
@@ -27,7 +26,7 @@
               [alt]="product?.productId?.images[0]"
             />
           </div>
-          <div class="card-body bg-light">
+          <div class="card-body my-5 bg-light">
             <h5
               class="card-title link-primary link-offset-3-hover link-opacity-100-hover"
               style="
