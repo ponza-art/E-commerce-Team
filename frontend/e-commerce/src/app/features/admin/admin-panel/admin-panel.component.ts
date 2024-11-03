@@ -152,7 +152,7 @@ export class AdminPanelComponent implements OnInit {
               title: 'Error!',
               text: 'An error occurred while deleting the product.',
               icon: 'error',
-              confirmButtonColor: '#c03f00',
+              confirmButtonColor: '#c03f01',
             });
           }
         );
