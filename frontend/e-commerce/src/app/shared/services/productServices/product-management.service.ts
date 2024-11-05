@@ -24,24 +24,24 @@ export class ProductManagementService {
   getAllProducts(
     paramsObj?: ProductParams
   ): Observable<databaseWatchDetails[]> {
-    let params = new HttpParams();
+    let param = new HttpParams();
 
     if (paramsObj?.gender) {
-      params = params.set('gender', paramsObj.gender);
+      param = param.set('gender', paramsObj.gender);
     }
 
     if (paramsObj?.brand) {
-      params = params.set('brand', paramsObj.brand);
+      param = param.set('brand', paramsObj.brand);
     }
 
     if (paramsObj?.category) {
-      params = params.set('category', paramsObj.category);
+      param = param.set('category', paramsObj.category);
     }
     if (paramsObj?.color) {
-      params = params.set('color', paramsObj.color);
+      param = param.set('color', paramsObj.color);
     }
 
-    return this._http.get<databaseWatchDetails[]>(this.apiUrl, { params });
+    return this._http.get<databaseWatchDetails[]>(this.apiUrl, { param });
   }
 
   getfilters(filter: string) {
